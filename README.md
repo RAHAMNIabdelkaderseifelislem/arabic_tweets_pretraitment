@@ -9,20 +9,19 @@ app/
 |-- config/
 |   |-- database.php
 |   |-- constants.php
-|-- controllers/
+|-- controller/
 |   |-- PreprocessingController.php
 |   |-- TweetController.php
-|-- helpers/
+|-- helper/
 |   |-- utility.php
-|-- models/
+|-- model/
 |   |-- TweetModel.php
-|-- views/
+|-- view/
 |   |-- index.php
 |   |-- preprocessing.php
 |-- preprocess/
 |   |-- Tokenizer.php
 |   |-- Normalizer.php
-|   |-- StopwordRemover.php
 |-- vendor/
 |   |-- (third-party libraries)
 |-- index.php
