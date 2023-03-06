@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helper;
+namespace tweets_pre\Helper;
 
 class Utility {
     public static function redirect($url) {
