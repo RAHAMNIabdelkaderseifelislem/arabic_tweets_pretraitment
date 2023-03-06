@@ -11,17 +11,17 @@ if (isset($_POST["submit"])) {
 	// Remove emojis and hashtags, and non-Arabic letters from the second column of each row
 	foreach ($data as &$row) {
 		// Remove emojis
-		$row[1] = preg_replace(EMOJI_PATTERN, '', $row[1]);
+		$row = preg_replace(EMOJI_PATTERN, '', $row);
 
 		// Remove hashtags
-		$row[1] = preg_replace(HASHTAG_PATTERN, '', $row[1]);
+		$row = preg_replace(HASHTAG_PATTERN, '', $row);
 
 		// Remove non-Arabic letters
-		$row[1] = preg_replace('/[^\x{0600}-\x{06FF}]/u', ' ', $row[1]);
+		$row = preg_replace('/[^\x{0600}-\x{06FF}]/u', ' ', $row);
 	}
 
 	// Generate an HTML table from the modified CSV data
-	echo "<table>";
+	echo '<table border="1"><thead><tr><th>tweet</th></tr></thead>';
 	foreach ($data as $row) {
 		echo "<tr>";
 		foreach ($row as $cell) {
