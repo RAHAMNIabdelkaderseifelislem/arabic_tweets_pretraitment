@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
 		$row[0] = preg_replace(HASHTAG_PATTERN, '', $row[0]);
 
 		// Remove non-Arabic letters
-		$row[0] = preg_replace('/[^\x{0600}-\x{06FF}]/u', '', $row[0]);
+		$row[0] = preg_replace('/[^\x{0600}-\x{06FF}]/u', ' ', $row[0]);
 	}
 
 	// Generate an HTML table from the modified CSV data
