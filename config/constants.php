@@ -16,3 +16,5 @@ define('TWITTER_ACCESS_TOKEN_SECRET', 'your_access_token_secret');
 define('APP_NAME', 'Tweets Preprocessing');
 define('APP_VERSION', '0.2.0');
 define('APP_URL', 'http://localhost/your-web-app/');
+
+?>

@@ -16,3 +16,5 @@ class Normalizer {
         return $tweet;
     }
 }
+
+?>

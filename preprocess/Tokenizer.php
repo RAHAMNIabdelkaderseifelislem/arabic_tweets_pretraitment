@@ -16,3 +16,5 @@ class Tokenizer {
         return $tokens;
     }
 }
+
+?>

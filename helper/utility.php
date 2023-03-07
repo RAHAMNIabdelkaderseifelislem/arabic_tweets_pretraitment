@@ -20,3 +20,5 @@ class Utility {
         return isset($_POST[$name]) ? self::sanitize($_POST[$name]) : $default;
     }
 }
+
+?>

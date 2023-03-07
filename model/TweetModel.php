@@ -41,3 +41,5 @@ class TweetModel {
         $this->preprocessedTweet = $preprocessedTweet;
     }
 }
+
+?>
