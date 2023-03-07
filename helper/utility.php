@@ -22,3 +22,5 @@ class Utility {
 }
 
 ?>
+
+<?php header('Content-Type: text/html; charset=UTF-8'); ?>

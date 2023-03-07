@@ -18,3 +18,5 @@ define('APP_VERSION', '0.2.0');
 define('APP_URL', 'http://localhost/your-web-app/');
 
 ?>
+
+<?php header('Content-Type: text/html; charset=UTF-8'); ?>

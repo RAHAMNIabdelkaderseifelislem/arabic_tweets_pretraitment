@@ -13,3 +13,5 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 ?>
+
+<?php header('Content-Type: text/html; charset=UTF-8'); ?>
