@@ -1,10 +1,9 @@
 <?php
 
-namespace tweets_pre\Controller;
 
-use tweets_pre\Model\TweetModel;
-use tweets_pre\Preprocess\Tokenizer;
-use tweets_pre\Preprocess\Normalizer;
+use tweets_pre\model\TweetModel;
+use tweets_pre\preprocess\Tokenizer;
+use tweets_pre\preprocess\Normalizer;
 
 header('Content-Type: text/html; charset=UTF-8');
 

@@ -1,6 +1,5 @@
 <?php
 
-namespace tweets_pre\Helper;
 
 header('Content-Type: text/html; charset=UTF-8');
 

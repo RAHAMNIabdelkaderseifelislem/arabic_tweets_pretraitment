@@ -1,8 +1,7 @@
 <?php
 
-namespace tweets_pre\Model;
 
-use tweets_pre\Helper\Utility;
+use tweets_pre\helper\Utility;
 
 header('Content-Type: text/html; charset=UTF-8');
 
