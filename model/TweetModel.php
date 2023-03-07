@@ -1,48 +1,43 @@
 <?php
 
-class Tweet
-{
+namespace tweets_pre\Model;
+
+use tweets_pre\Helper\Utility;
+
+class TweetModel {
     private $id;
-    private $text;
-
-    public function __construct($id, $text)
-    {
+    private $tweet;
+    private $preprocessedTweet;
+    
+    public function __construct($id, $tweet) {
         $this->id = $id;
-        $this->text = $text;
+        $this->tweet = $tweet;
     }
-
-    public function getId()
-    {
+    
+    public function getId() {
         return $this->id;
     }
-
-    public function getText()
-    {
-        return $this->text;
+    
+    public function getTweet() {
+        return $this->tweet;
     }
-
-    public function setText($text)
-    {
-        $this->text = $text;
+    
+    public function setPreprocessedTweet($preprocessedTweet) {
+        $this->preprocessedTweet = $preprocessedTweet;
     }
-
-    public function removeEmojis()
-    {
-        $this->text = preg_replace(EMOJI_PATTERN, '', $this->text);
+    
+    public function getPreprocessedTweet() {
+        return $this->preprocessedTweet;
     }
-
-    public function removeHashtags()
-    {
-        $this->text = preg_replace(HASHTAG_PATTERN, '', $this->text);
-    }
-
-    public function removeNonArabicLetters()
-    {
-        $this->text = preg_replace('/[^\x{0600}-\x{06FF}]/u', '', $this->text);
-    }
-
-    public function __toString()
-    {
-        return "Tweet " . $this->id . ": " . $this->text;
+    
+    public function preprocess() {
+        // Use the Tokenizer and Normalizer classes to preprocess the tweet
+        $tokenizer = new Tokenizer();
+        $tokens = $tokenizer->tokenize($this->tweet);
+        
+        $normalizer = new Normalizer();
+        $preprocessedTweet = $normalizer->normalize($tokens);
+        
+        $this->preprocessedTweet = $preprocessedTweet;
     }
 }
