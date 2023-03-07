@@ -6,6 +6,8 @@ use tweets_pre\Model\TweetModel;
 use tweets_pre\Preprocess\Tokenizer;
 use tweets_pre\Preprocess\Normalizer;
 
+header('Content-Type: text/html; charset=UTF-8');
+
 class TweetController {
     private $tweetModel;
     private $normalizer;
@@ -54,5 +56,3 @@ class TweetController {
     }
 }
 ?>
-
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>

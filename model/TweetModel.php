@@ -4,6 +4,8 @@ namespace tweets_pre\Model;
 
 use tweets_pre\Helper\Utility;
 
+header('Content-Type: text/html; charset=UTF-8');
+
 class TweetModel {
     private $id;
     private $tweet;
@@ -43,5 +45,3 @@ class TweetModel {
 }
 
 ?>
-
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>

@@ -5,6 +5,8 @@ namespace tweets_pre\Controller;
 use tweets_pre\Preprocess\Normalizer;
 use tweets_pre\Preprocess\Tokenizer;
 
+header('Content-Type: text/html; charset=UTF-8');
+
 class PreprocessingController {
     private $normalizer;
     private $tokenizer;
@@ -42,5 +44,3 @@ class PreprocessingController {
 }
 
 ?>
-
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>

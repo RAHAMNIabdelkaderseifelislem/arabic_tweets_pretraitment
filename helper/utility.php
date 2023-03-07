@@ -2,6 +2,8 @@
 
 namespace tweets_pre\Helper;
 
+header('Content-Type: text/html; charset=UTF-8');
+
 class Utility {
     public static function redirect($url) {
         header("Location: " . $url);
@@ -22,5 +24,3 @@ class Utility {
 }
 
 ?>
-
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>

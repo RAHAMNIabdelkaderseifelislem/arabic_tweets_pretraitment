@@ -2,6 +2,8 @@
 
 namespace tweets_pre\Preprocess;
 
+header('Content-Type: text/html; charset=UTF-8');
+
 class Tokenizer {
     public function tokenize($tweet) {
         // Remove any non arabic letters
@@ -18,5 +20,3 @@ class Tokenizer {
 }
 
 ?>
-
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>

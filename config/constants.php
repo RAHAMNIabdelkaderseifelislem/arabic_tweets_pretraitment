@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: text/html; charset=UTF-8');
+
 // Database constants
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'tweets_pre');
@@ -18,5 +20,3 @@ define('APP_VERSION', '0.2.0');
 define('APP_URL', 'http://localhost/your-web-app/');
 
 ?>
-
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>
