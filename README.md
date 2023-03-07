@@ -12,6 +12,8 @@ app/
 |-- controller/
 |   |-- PreprocessingController.php
 |   |-- TweetController.php
+|-- db/
+|   |-- tweets_pre.sql
 |-- helper/
 |   |-- utility.php
 |-- model/
