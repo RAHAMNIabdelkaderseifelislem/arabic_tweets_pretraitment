@@ -1,5 +1,6 @@
 <?php
 
+namespace tweets_pre\model;
 
 use tweets_pre\helper\Utility;
 
@@ -10,10 +11,11 @@ class TweetModel {
     private $tweet;
     private $preprocessedTweet;
     
-    public function __construct($id, $tweet) {
+    public function __construct($id = 0, $tweet = "") {
         $this->id = $id;
         $this->tweet = $tweet;
     }
+    
     
     public function getId() {
         return $this->id;

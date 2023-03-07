@@ -7,6 +7,9 @@ use tweets_pre\preprocess\Normalizer;
 
 header('Content-Type: text/html; charset=UTF-8');
 
+require_once 'model/TweetModel.php';
+
+
 class TweetController {
     private $tweetModel;
     private $normalizer;
