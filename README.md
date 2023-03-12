@@ -5,27 +5,20 @@ this website contains a pretraitment of arabic tweets to be used in sentiment an
 ## structure
 
 ```bash
-app/
-|-- config/
-|   |-- database.php
-|   |-- constants.php
-|-- controller/
-|   |-- PreprocessingController.php
-|   |-- TweetController.php
-|-- db/
-|   |-- tweets_pre.sql
-|-- helper/
-|   |-- utility.php
-|-- model/
-|   |-- TweetModel.php
-|-- view/
-|   |-- index.php
-|   |-- preprocessing.php
-|-- preprocess/
-|   |-- Tokenizer.php
-|   |-- Normalizer.php
-|-- vendor/
-|   |-- (third-party libraries)
-|-- index.php
-|-- README.md
+- tweets_pre/
+    - index.php              // the main entry point for the application
+    - upload.php             // handles the CSV file upload and preprocessing
+    - preprocess.php         // contains the pre-processing functions for the tweets
+    - database.php           // contains functions to connect to the database
+    - models/
+        - Tweet.php          // a model for a single tweet
+    - views/
+        - upload.php         // the form to upload a CSV file
+        - results.php        // displays the pre-processed tweets
+    - assets/
+        - css/
+            - style.css      // styles for the views
+    - vendor/
+        - autoload.php       // autoloader for third-party packages
+
 ```
