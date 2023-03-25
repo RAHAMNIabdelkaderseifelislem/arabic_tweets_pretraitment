@@ -73,5 +73,12 @@ if (isset($_POST["submit"])) {
             <?php endforeach; ?>
         </table>
     <?php endif; ?>
+    <!--- save the processed data to a file -->
+    <?php if ($processed_data): ?>
+        <form action="save.php" method="post">
+            <input type="hidden" name="processed_data" value="<?php echo htmlspecialchars(json_encode($processed_data), ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="submit" name="save" value="Save">
+        </form>
+    <?php endif; ?>
 </body>
 </html>
