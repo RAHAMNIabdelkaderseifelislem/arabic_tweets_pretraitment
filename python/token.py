@@ -1,14 +1,18 @@
-import tkseem as tk
+import nltk
+from nltk.tokenize import word_tokenize
 import csv
 
-# initialize the tokenizer
-tokenizer = tk.WordTokenizer()
-tokenizer.train('data.txt')
-# open the csv file and read the text data
-with open('../uploads/tweets-ar.csv', mode='r', encoding='utf-8') as csv_file:
-    csv_reader = csv.reader(csv_file)
-    for row in csv_reader:
-        text = row[0]
-        # tokenize the text using tkseem
-        tokens = tokenizer.tokenize(text)
-        print(tokens)
+tweets_tokenized = []
+# Open the file
+with open('..uploads/tweets-ar.csv', 'r', encoding='utf-8') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        # Tokenize the tweet
+        tokens = [nltk.word_tokenize(i) for i in row]
+        # Print the tokens
+        for i in tokens:
+            tokens_list = u"['" + u"', '".join(i) + u"']"
+        tweets_tokenized.append(tokens_list)
+        print(tokens_list)
+
+print(tweets_tokenized)
