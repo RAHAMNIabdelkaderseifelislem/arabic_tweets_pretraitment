@@ -21,6 +21,27 @@ if (isset($_POST["submit"])) {
     }
 }
 
+if (isset($_POST["save"])) {
+    // Retrieve the processed data
+    $processed_data = json_decode($_POST["processed_data"], true);
+
+    // Create the uploads directory if it doesn't exist
+    if (!is_dir("uploads")) {
+        mkdir("uploads");
+    }
+
+    // Save the processed data to a file
+    $file = fopen("uploads/tweets-ar.csv", "w");
+    foreach ($processed_data as $row) {
+        fputcsv($file, $row);
+    }
+    fclose($file);
+
+    // Redirect to the original page with a success message
+    header("Location: preprocess.php?success=1");
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -72,12 +93,22 @@ if (isset($_POST["submit"])) {
                 </tr>
             <?php endforeach; ?>
         </table>
+        <p><a href="uploads/tweets-ar.csv" download>Download processed data</a></p>
     <?php endif; ?>
-    <!--- save the processed data to a file -->
+    <?php if (!$processed_data && isset($_GET["success"])): ?>
+        <p>Data has been processed and saved successfully!</p>
+    <?php endif; ?>
+    <h2>Upload CSV file</h2>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="csv_file">
+        <br><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
     <?php if ($processed_data): ?>
-        <form action="save.php" method="post">
+        <h2>Save Preprocessed Data</h2>
+        <form method="post">
             <input type="hidden" name="processed_data" value="<?php echo htmlspecialchars(json_encode($processed_data), ENT_QUOTES, 'UTF-8'); ?>">
-            <input type="submit" name="save" value="Save">
+            <input type="submit" name="save" value="Save Preprocessed Data">
         </form>
     <?php endif; ?>
 </body>
