@@ -1,10 +1,16 @@
+import sys
+
+sys.path.append("c:\program files\python39\lib\site-packages")
+
 import nltk
 from nltk.tokenize import word_tokenize
 import csv
 
+print('<html><head><title>Tokenization</title> <meta charset="UTF-8"></head><body>')
+
 tweets_tokenized = []
 # Open the file
-with open('..uploads/tweets-ar.csv', 'r', encoding='utf-8') as f:
+with open('../uploads/tweets-ar.csv', 'r', encoding='utf-8') as f:
     reader = csv.reader(f)
     for row in reader:
         # Tokenize the tweet
@@ -16,3 +22,5 @@ with open('..uploads/tweets-ar.csv', 'r', encoding='utf-8') as f:
         print(tokens_list)
 
 print(tweets_tokenized)
+
+print("</body></html>")
