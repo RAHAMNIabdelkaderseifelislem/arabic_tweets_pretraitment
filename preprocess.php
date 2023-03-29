@@ -86,7 +86,7 @@ if (isset($_POST["submit"])) {
             <?php endforeach; ?>
         </table>
         <p><a href="uploads/tweets-ar.csv" download>Download processed data</a></p>
-        <p><a href="tokenize.php">Tokenize</a></p>
+        <p><a href="pretraitment/tokenize.php">Tokenize</a></p>
     <?php endif; ?>
 </body>
 </html>
