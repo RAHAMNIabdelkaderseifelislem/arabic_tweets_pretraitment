@@ -16,14 +16,17 @@ while(!feof($fp)){
 // create an array to count the number of words in each tweet
 $num_words = array();
 
-// create an array to store the words in each tweet
-$words = array();
+
+// create an array to contain the lines of the file
+$lines = array();
 
 // go back to the beginning of the file
 rewind($fp);
 
 // read the file line by line
 while(($line = fgetcsv($fp)) !== FALSE) {
+    // create an array to store the words in each tweet
+    $words = array();
     // split the line into an array of words
     $words = preg_split('/\s+/', $line[0]);
     // loop through the words
@@ -31,6 +34,7 @@ while(($line = fgetcsv($fp)) !== FALSE) {
         // write the word to the file
         fputcsv($fp2, array($word));    
     }
+    $lines[] = $words;
     // count the number of words in each tweet
     $num_words[] = count($words);
 }
@@ -47,12 +51,14 @@ fclose($fp2);
     <title>Tokenizing</title>
     <script>
         function showWords() {
+            document.getElementById("show_btn").style.display = "none";
             document.getElementById("words").style.display = "block";
-            document.getElementById("hide_btn").style.display = "none";
+            document.getElementById("hide_btn").style.display = "block";
         }
         function hideWords() {
+            document.getElementById("show_btn").style.display = "block";
             document.getElementById("words").style.display = "none";
-            document.getElementById("hide_btn").style.display = "block";
+            document.getElementById("hide_btn").style.display = "none";
         }
     </script>
 </head>
@@ -67,27 +73,18 @@ fclose($fp2);
             </tr>
         </thead>
         <tbody>
-            <?php for ($i = 0; $i < $linecount; $i++): ?>
+            <?php for ($i = 0; $i < $linecount-1; $i++): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($original_data[$i][0], ENT_QUOTES, 'UTF-8'); ?></td>
+                    <td><?php echo htmlspecialchars($i+1, ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?php echo htmlspecialchars($num_words[$i], ENT_QUOTES, 'UTF-8'); ?></td>
                     <td>
-                        <button onclick="showWords()">Show Words</button>
+                        <button onclick="showWords()" id="show_btn">Show Words</button>
                         <button id="hide_btn" onclick="hideWords()" style="display: none;">Hide Words</button>
-                        <table border="1" id="words" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th>word</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php for ($j = 0; $j < $num_words[$i]; $j++): ?>
-                                    <tr>
-                                        <td><?php echo htmlspecialchars($words[$j], ENT_QUOTES, 'UTF-8'); ?></td>
-                                    </tr>
-                                <?php endfor; ?>
-                            </tbody>
-                        </table>
+                        <div id="words" style="display: none;">
+                            <?php foreach($lines[$i] as $word): ?>
+                                <?php echo htmlspecialchars($word, ENT_QUOTES, 'UTF-8').';'; ?><br>
+                            <?php endforeach; ?>
+                        </div>
                     </td>
                 </tr>
             <?php endfor; ?>
