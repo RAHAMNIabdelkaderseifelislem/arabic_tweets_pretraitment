@@ -106,5 +106,6 @@ fclose($fp2);
     </tbody>
 </table>
 
+<a href="normalize.php">Normalize</a>
 </body>
 </html>
