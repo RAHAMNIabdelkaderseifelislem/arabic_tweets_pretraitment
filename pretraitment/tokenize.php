@@ -23,22 +23,27 @@ $lines = array();
 // go back to the beginning of the file
 rewind($fp);
 
+$i = 1;
 // read the file line by line
 while(($line = fgetcsv($fp)) !== FALSE) {
     // create an array to store the words in each tweet
     $words = array();
+    //word count
+    $word_count = 0;
     // split the line into an array of words
     $words = preg_split('/\s+/', $line[0]);
     // loop through the words
     foreach($words as $word) {
         // write the word to the file
         if (strlen($word)>1){
-            fputcsv($fp2, array($word));
+            fputcsv($fp2, array($i.",".$word));
+            $word_count++;
         }
     }
     $lines[] = $words;
     // count the number of words in each tweet
-    $num_words[] = count($words);
+    $num_words[] = $word_count;
+    $i++;
 }
 
 // close the files
