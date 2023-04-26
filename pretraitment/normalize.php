@@ -77,11 +77,15 @@ while (($line = fgetcsv($fp)) !== FALSE) {
 fclose($fp);
 
 // calculate the tf-idf for each word in each tweet
+$tf_arr = array();
+$idf_arr = array();
 $tf_idf = array();
 foreach ($term_freq as $tweet_id => $words) {
     foreach ($words as $word => $freq) {
         $tf = $freq / $num_words[$tweet_id - 1];
         $idf = log($num_tweets / $inv_doc_freq[$word]);
+        $tf_arr[$tweet_id][$word] = $tf;
+        $idf_arr[$word] = $idf;
         $tf_idf[$tweet_id][$word] = $tf * $idf;
     }
 }
@@ -93,11 +97,11 @@ echo "<tr><th>tweet</th><th>word</th><th>term frequency</th></tr>";
 echo "</thead>";
 echo "<tbody>";
 foreach ($term_freq as $tweet_id => $words) {
-    foreach ($words as $word => $freq) {
+    foreach ($words as $word) {
         echo "<tr>";
         echo "<td>" . htmlspecialchars($tweet_id, ENT_QUOTES, 'UTF-8') . "</td>";
         echo "<td>" . htmlspecialchars($word, ENT_QUOTES, 'UTF-8') . "</td>";
-        echo "<td>" . htmlspecialchars($freq, ENT_QUOTES, 'UTF-8') . "</td>";
+        echo "<td>" . htmlspecialchars($tf_arr[$tweet_id][$word], ENT_QUOTES, 'UTF-8') . "</td>";        
         echo "</tr>";
     }
 }
@@ -109,10 +113,10 @@ echo "<thead>";
 echo "<tr><th>word</th><th>inverse document frequency</th></tr>";
 echo "</thead>";
 echo "<tbody>";
-foreach ($inv_doc_freq as $word => $idf) {
+foreach ($inv_doc_freq as $word) {
     echo "<tr>";
     echo "<td>" . htmlspecialchars($word, ENT_QUOTES, 'UTF-8') . "</td>";
-    echo "<td>" . htmlspecialchars($idf, ENT_QUOTES, 'UTF-8') . "</td>";
+    echo "<td>" . htmlspecialchars($idf_arr[$word], ENT_QUOTES, 'UTF-8') . "</td>";
     echo "</tr>";
 }
 echo "</tbody>";
