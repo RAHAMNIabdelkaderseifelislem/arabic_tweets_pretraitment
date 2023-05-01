@@ -53,6 +53,24 @@ then you can access the website from your browser using the following url
 http://localhost:8000
 ```
 
+## screenshots
+
+first look :
+![first look](screenshots/firstlook.png)
+after upload :
+![full page after upload](screenshots/fullpageafterUpload.png)
+
+tables :
+![Original tweets table shown](screenshots/OriginalTweets.png)
+![tweets after deleting the english tweets and every thing that is not table shown](screenshots/ProcessedTweets.png)
+![tokenization of each tweet table shows](screenshots/tokens.png)
+![the arabic sentiment analysis table shown](screenshots/SentimentAnalysis.png)
+
+graphs :
+![the number of words per tweet bar chart shown](screenshots/WordsNumberChart.png)
+![the positive and negative tweets pie chart shown](screenshots/Positive_vs_NegativeChart.png)
+![the probability of each tweet to be positive or negative bar chart shown](screenshots/ProbabilityChart.png)
+
 ## credits
 
 - [khaled alshamaa](https://github.com/khaled-alshamaa/ar-php)
