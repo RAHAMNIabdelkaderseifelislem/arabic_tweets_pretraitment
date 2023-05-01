@@ -13,6 +13,8 @@ it is a website that is built using php and javascript and it uses composer to m
             - style.css   // the main css file
         - js/              // the javascript files
             - script.js   // the main javascript file
+    - Data/                 // the data that i used to test the website
+        - 7-tweets.csv       // the arabic tweets
     - uploads/               // the uploaded files
         - tokens.csv        // the tokens of the tweets
         - tweets-ar.csv     // the arabic tweets after deleting the english tweets and every thing that is not
