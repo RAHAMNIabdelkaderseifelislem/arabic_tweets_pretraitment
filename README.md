@@ -31,7 +31,7 @@ to install the website you need to have composer installed on your machine
 
 ```bash
 # clone the repository
-git clone
+git clone https://github.com/RAHAMNIabdelkaderseifelislem/arabic_tweets_pretraitment.git
 
 # install the composer packages
 composer install
