@@ -1,0 +1,326 @@
+
+* {
+	direction: rtl;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Tahoma", sans-serif;
+}
+body {
+	background-color: #f5f8ff;
+}
+.container {
+	background-color: #ffffff;
+	width: 80%;
+	min-width: 37.5em;
+	padding: 3.12em 1.87em;
+	position: absolute;
+	transform: translateX(-50%);
+	left: 50%;
+	top: 1em;
+	box-shadow: 0 1.25em 3.43em rgba(0, 0, 0, 0.08);
+	border-radius: 0.5em;
+	/*position after menu at first*/
+	margin-top: 4.5em;
+
+}
+input[type="file"] {
+	display: none;
+}
+label {
+	display: block;
+	position: relative;
+	background-color: #025bee;
+	color: #ffffff;
+	font-size: 1.1em;
+	text-align: center;
+	width: 16em;
+	padding: 1em 0;
+	border-radius: 0.3em;
+	margin: 0 auto 1em auto;
+	cursor: pointer;
+}
+#image-display {
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-evenly;
+	gap: 1.25em;
+	flex-wrap: wrap;
+}
+#image-display figure {
+	width: 45%;
+}
+#image-display img {
+	width: 100%;
+}
+#image-display figcaption {
+	font-size: 0.8em;
+	text-align: center;
+	color: #5a5861;
+}
+.active {
+	border: 0.2em dashed #025bff;
+}
+#error {
+	text-align: center;
+	color: #ff3030;
+}
+button {
+	display: block;
+	position: relative;
+	background-color: #025bee;
+	color: #ffffff;
+	font-size: 1.3em;
+	text-align: center;
+	width: 12em;
+	padding: 0.3em 0;
+	border-radius: 0.3em;
+	margin: 0 auto 0.2em auto;
+}
+
+button:hover {
+	background-color: #ffffff;
+	color: #025bee;
+	border-radius: 0.5em;
+}
+
+.result {
+	background-color: #ffffff;
+	position: relative;
+	border-radius: 0.5em;
+	border-style:solid;
+	border-width:5px;
+	border-color: #025bee	;
+}
+
+table {
+	border: 0;
+	width: 60%;
+	margin: 0 auto;
+
+}
+
+th{
+	background-color: #27509D;
+	color: #ffffff;
+	padding: 0.5em 0;
+
+}
+
+.styledbyfile {
+	padding: 0.5em 0;
+	text-align: center;
+	background-color: #f5f8ff;
+}
+
+.graphs {
+	width: 100%;
+	height: 100%;
+	background-color: #ffffff;
+	position: relative;
+	border-radius: 0.5em;
+	border-style:solid;
+	border-width:5px;
+	border-color: #025bee	;
+
+}
+
+#piechart {
+	width: 80%;
+	height: 80%;
+	background: fixed;
+	background-color: #f5f8ff;
+	margin: 0 auto;
+
+}
+
+/* navbar */
+/* adding transparecy  */
+nav {
+	background-color: #025bee;
+	padding: 0.5em 0;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1;
+	opacity: 0.9;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.nav-links {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+nav ul {
+	list-style: none;
+	text-align: center;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 1.2em;
+	padding: 0.5em 1em;
+}
+
+nav ul li a:hover {
+	background-color: #ffffff;
+	color: #025bee;
+	border-radius: 0.5em;
+}
+
+nav .logo a {
+	color: #e0e0e0;
+	font-size: 1.9em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+nav .logo a:hover {
+	color: #ffffff;
+}
+
+
+/* dropdown menu */
+.dropdown {
+	position: relative;
+	display: inline-block;
+	background-color: #025bee;
+  }
+  
+.dropdown-content {
+	display: none;
+	position: absolute;
+	z-index: 1;
+	background-color: #025bee;
+	padding: 0.5em 0;
+	border-radius: 0.5em;
+	margin: 0.8em 0;
+  }
+  
+.dropdown:hover .dropdown-content {
+	display: block;
+  }
+  
+.dropdown-content a {
+	color: #ffffff;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+.dropdown-content a:hover {
+	background-color: #ffffff;
+	color: #025bee;
+  }
+
+.upl{
+	padding: 4.25em 1.87em;
+}
+
+.result{
+	padding: 4.25em 1.87em;
+}
+
+.graphs{
+	padding: 4.25em 1.87em;
+}
+
+#original{
+	padding: 4.25em 1.87em;
+}
+
+#processed{
+	padding: 4.25em 1.87em;
+}
+
+#tokenize{
+	padding: 4.25em 1.87em;
+}
+
+#analysis{
+	padding: 4.25em 1.87em;
+}
+
+.graphs h2 {
+	padding: 1.25em 1.87em;
+}
+
+
+.numwords{
+	padding-top: 4.25em 1.87em;
+}
+
+.numwords h3{
+	padding: 1.25em 1.87em;
+}
+
+.numwords button{
+	margin: 1.25em 1.87em;
+}
+
+.pieChart{
+	padding: 4.25em 1.87em;
+}
+
+.pieChart h3{
+	padding: 1.25em 1.87em;
+}
+
+.pieChart button{
+	margin: 1.25em 1.87em;
+}
+
+.probabilities{
+	padding: 4.25em 1.87em;
+}
+
+.probabilities h3{
+	padding: 1.25em 1.87em;
+}
+
+.probabilities button{
+	margin: 1.25em 1.87em;
+}
+/* media queries */
+@media screen and (max-width: 768px) {
+	.container {
+		width: 90%;
+	}
+	#image-display figure {
+		width: 100%;
+	}
+	#image-display {
+		width: 100%;
+	}
+	#image-display img {
+		width: 100%;
+	}
+	#image-display figcaption {
+		font-size: 0.8em;
+		text-align: center;
+		color: #5a5861;
+	}
+	.result {
+		width: 100%;
+	}
+	table {
+		width: 100%;
+	}
+	.graphs {
+		width: 100%;
+	}
+	#piechart {
+		width: 100%;
+	}
+}
+
