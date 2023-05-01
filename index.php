@@ -219,14 +219,16 @@ fclose($fp2);
                 <table id="processed_tweets" style="display: none;">
                     <thead>
                         <tr>
-                            <th>التغريدة</th>
+                            <th> التغريدة الاصلية</th>
+                            <th>التغريدة المعالجة</th>
                         </tr>
                     </thead>
-                    <?php foreach ($processed_data as $row): ?>
+                    <?php for($i = 0; $i < count($processed_data); $i++): ?>
                         <tr>
-                            <td class="styledbyfile"><?php echo htmlspecialchars($row[0], ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td class="styledbyfile"><?php echo htmlspecialchars($original_data[$i][0], ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td class="styledbyfile"><?php echo htmlspecialchars($processed_data[$i][0], ENT_QUOTES, 'UTF-8'); ?></td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endfor; ?>
                 </table>
             <?php endif; ?>
             </div>
