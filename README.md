@@ -61,10 +61,11 @@ after upload :
 ![full page after upload](screenshots/fullpageafterUpload.png)
 
 tables :
-![Original tweets table shown](screenshots/OriginalTweets.png)
-![tweets after deleting the english tweets and every thing that is not table shown](screenshots/ProcessedTweets.png)
-![tokenization of each tweet table shows](screenshots/tokens.png)
-![the arabic sentiment analysis table shown](screenshots/SentimentAnalysis.png)
+
+- ![Original tweets table shown](screenshots/OriginalTweets.png)
+- ![tweets after deleting the english tweets and every thing that is not table shown](screenshots/ProcessedTweets.png)
+- ![tokenization of each tweet table shows](screenshots/tokens.png)
+- ![the arabic sentiment analysis table shown](screenshots/SentimentAnalysis.png)
 
 graphs :
 ![the number of words per tweet bar chart shown](screenshots/WordsNumberChart.png)
