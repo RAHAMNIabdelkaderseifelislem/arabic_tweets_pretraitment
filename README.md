@@ -54,4 +54,3 @@ http://localhost:8000
 ## credits
 
 - [khaled alshamaa](https://github.com/khaled-alshamaa/ar-php)
-- [jquery](https://jquery.com/)
