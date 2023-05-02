@@ -349,6 +349,9 @@ fclose($fp2);
                 echo '<td bgcolor="'.$bgcolor.'" align="center">'.$probability.'%</td></tr>';
                 // encode the data of the tweet in json format with tweet id, tweet text, sentiment, probability, and word sentiment add utf8_encode to fix arabic encoding
                 $tweet_data = json_encode(array('id' => $i, 'text' => $review[0], 'sentiment' => $sentiment, 'probability' => $probability, 'word_sentiment' => $word_sentiment), JSON_UNESCAPED_UNICODE);
+
+                // json pretty print
+                $tweet_data = json_encode(json_decode($tweet_data), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                 
                 // save it into a .json file at uploads folder check if the folder exists if not create it and create the tweets folder inside it
                 if (!file_exists('uploads/tweets')) {
