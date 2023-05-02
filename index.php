@@ -139,6 +139,7 @@ fclose($fp2);
                     <a href="#processed">التغريدات المعالجة</a>
                     <a href="#tokenize">ترميز التغريدات</a>
                     <a href="#analysis">تحليل المشاعر</a>
+                    <a href="#analysis_words">تحليل الكلمات</a>
                 </div>
             </li>
             <li class ="dropdown">
@@ -378,9 +379,9 @@ fclose($fp2);
                     <br><br>
                     <button id="showArabicSentimentWordsButton" onclick="showArabicSentimentWords()">إظهار تحليل المشاعر لكل كلمة</button>
                     <button id="hideArabicSentimentWordsButton" onclick="hideArabicSentimentWords()" style="display: none;">إخفاء تحليل المشاعر لكل كلمة</button>
-                    <div style="dispaly:none;" id="arabic_sentiment_words">
+                    <div style="display: none;" id="arabic_sentiment_words">
                     <center>
-                    <table border="0">
+                    <table border="0" cellspacing="2" cellpadding="5">
                         <tr>
                         <th  align="center">
                             <b><font>التغريدة</font></b>
