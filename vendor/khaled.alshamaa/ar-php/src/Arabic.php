@@ -4187,6 +4187,14 @@ class Arabic
         # split string to words
         $words = preg_split('/\s+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
 
+        # create a dictionary as words => score,pos,neg
+        $dict = array();
+        
+        #initialise the dictionary
+        foreach ($words as $word) {
+            $dict[$word] = array('score' => 0, 'pos' => 0, 'neg' => 0);
+        }
+
         # set initial scores
         $score = 0;
 
@@ -4226,11 +4234,19 @@ class Arabic
             if ($negationFlag) {
                 // switch positive/negative sentiment because of negation word effect
                 $score += -1 * (float)$this->logOdd[$sel_stem];
+
+                // update the dictionary
+                $dict[$word]['neg'] += 1;
+                $dict[$word]['score'] += -1 * (float)$this->logOdd[$sel_stem];
                 
                 $negationFlag = false;
             } else {
                 # retrive the positive and negative log odd scores and accumulate them
                 $score += $this->logOdd[$sel_stem];
+
+                # update the dictionary
+                $dict[$word]['pos'] += 1;
+                $dict[$word]['score'] += (float)$this->logOdd[$sel_stem];
             }
 
             if (in_array($word, $negationWords)) {
@@ -4246,7 +4262,7 @@ class Arabic
         
         $probability = exp(abs($score)) / (1 + exp(abs($score)));
 
-        return array('isPositive' => $isPositive, 'probability' => $probability);
+        return array('isPositive' => $isPositive, 'probability' => $probability, 'dict' => $dict);
     }
     
     /**

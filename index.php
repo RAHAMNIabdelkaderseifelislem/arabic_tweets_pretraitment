@@ -85,6 +85,8 @@ while(($line = fgetcsv($fp)) !== FALSE) {
     $num_words[] = $word_count;
     $i++;
 }
+// prepare the array for sentiment analysis that save the word and its probability in the same array
+$words_prob = array();
 
 // close the files
 fclose($fp);
@@ -320,8 +322,10 @@ fclose($fp2);
                             positive++;
                             // assign positive probability to positive probabilities array
                             probabilities.push('.round(100 * $analysis['probability'], 1).');
-                            console.log("positive :",'.implode(",",$analysis).');
                         </script>';
+                        // get the word that made the tweet positive
+                        $word_sentiment = $analysis['dict'];
+
                 } else {
                     $sentiment = 'سلبي';
                     $bgcolor   = '#FFF0FF';
@@ -330,8 +334,10 @@ fclose($fp2);
                             negative++;
                             // assign negative probability to negative probabilities array
                             probabilities.push('.(-1)*(round(100 * $analysis['probability'], 1)).');
-                            console.log("negative :",'.implode($analysis).');
                         </script>';
+                        // get the word that made the tweet negative
+                        $word_sentiment = $analysis['dict'];
+
                 }
 
                 $probability = sprintf('%0.1f', round(100 * $analysis['probability'], 1));
