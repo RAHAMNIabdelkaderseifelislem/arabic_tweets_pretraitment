@@ -311,6 +311,7 @@ fclose($fp2);
                 </tr>
             END;
             // analyze sentiment of each tweet and store it in a new array
+            $i = 1;
             foreach ($original_data as $review) {
                 $analysis = $Arabic->arSentiment($review[0]);
                 
@@ -346,6 +347,19 @@ fclose($fp2);
                 echo '<font face="Tahoma">'.$review[0].'</font></td>';
                 echo '<td bgcolor="'.$bgcolor.'" align="center">'.$sentiment.'</td>';
                 echo '<td bgcolor="'.$bgcolor.'" align="center">'.$probability.'%</td></tr>';
+                // encode the data of the tweet in json format with tweet id, tweet text, sentiment, probability, and word sentiment add utf8_encode to fix arabic encoding
+                $tweet_data = json_encode(array('id' => $i, 'text' => $review[0], 'sentiment' => $sentiment, 'probability' => $probability, 'word_sentiment' => $word_sentiment), JSON_UNESCAPED_UNICODE);
+                
+                // save it into a .json file at uploads folder check if the folder exists if not create it and create the tweets folder inside it
+                if (!file_exists('uploads/tweets')) {
+                    mkdir('uploads/tweets', 0777, true);
+                }
+                file_put_contents('uploads/tweets/tweet'.$i.'.json', $tweet_data);
+
+                // print the tweet data in the console
+                echo '<script>console.log('.json_encode($tweet_data, JSON_UNESCAPED_UNICODE).')</script>';
+
+                $i++;
             }
 
             echo '</table></center></div>';
