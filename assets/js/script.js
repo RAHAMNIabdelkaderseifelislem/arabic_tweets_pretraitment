@@ -4,6 +4,7 @@ function showData() {
     document.getElementById("processed_tweets").style.display = "block";
     document.getElementById("tokenized_tweets").style.display = "block";
     document.getElementById("arabic_sentiment").style.display = "block";
+    document.getElementById("arabic_sentiment_words").style.display = "block";
     document.getElementById("showDataButton").style.display = "none";
     document.getElementById("hideDataButton").style.display = "block";
     document.getElementById("showOriginalTweetsButton").style.display = "none";
@@ -14,13 +15,16 @@ function showData() {
     document.getElementById("hideTokenizedTweetsButton").style.display = "block";
     document.getElementById("showArabicSentimentButton").style.display = "none";
     document.getElementById("hideArabicSentimentButton").style.display = "block";
+    document.getElementById("showArabicSentimentWordsButton").style.display = "none";
+    document.getElementById("hideArabicSentimentWordsButton").style.display = "block";
 }
 function showOriginalTweets() {
     // check if the other tables are displayed or not
     var x = document.getElementById("processed_tweets").style.display ;
     var y = document.getElementById("tokenized_tweets").style.display ;
     var z = document.getElementById("arabic_sentiment").style.display ;
-    if (x == "block" && y == "block" && z == "block") {
+    var w = document.getElementById("arabic_sentiment_words").style.display ;
+    if (x == "block" && y == "block" && z == "block" && w == "block") {
         document.getElementById("showDataButton").style.display = "none";
         document.getElementById("hideDataButton").style.display = "block";
     }
@@ -33,7 +37,8 @@ function showProcessedTweets() {
     var x = document.getElementById("original_tweets").style.display ;
     var y = document.getElementById("tokenized_tweets").style.display ;
     var z = document.getElementById("arabic_sentiment").style.display ;
-    if (x == "block" && y == "block" && z == "block") {
+    var w = document.getElementById("arabic_sentiment_words").style.display ;
+    if (x == "block" && y == "block" && z == "block" && w == "block") {
         document.getElementById("showDataButton").style.display = "none";
         document.getElementById("hideDataButton").style.display = "block";
     }
@@ -46,7 +51,8 @@ function showTokenizedTweets() {
     var x = document.getElementById("original_tweets").style.display ;
     var y = document.getElementById("processed_tweets").style.display ;
     var z = document.getElementById("arabic_sentiment").style.display ;
-    if (x == "block" && y == "block" && z == "block") {
+    var w = document.getElementById("arabic_sentiment_words").style.display ;
+    if (x == "block" && y == "block" && z == "block" && w == "block") {
         document.getElementById("showDataButton").style.display = "none";
         document.getElementById("hideDataButton").style.display = "block";
     }
@@ -59,7 +65,8 @@ function showArabicSentiment() {
     var x = document.getElementById("original_tweets").style.display ;
     var y = document.getElementById("processed_tweets").style.display ;
     var z = document.getElementById("tokenized_tweets").style.display ;
-    if (x == "block" && y == "block" && z == "block") {
+    var w = document.getElementById("arabic_sentiment_words").style.display ;
+    if (x == "block" && y == "block" && z == "block" && w == "block") {
         document.getElementById("showDataButton").style.display = "none";
         document.getElementById("hideDataButton").style.display = "block";
     }
@@ -68,6 +75,14 @@ function showArabicSentiment() {
     document.getElementById("hideArabicSentimentButton").style.display = "block";
 }
 function showArabicSentimentWords(){
+    var x = document.getElementById("original_tweets").style.display ;
+    var y = document.getElementById("processed_tweets").style.display ;
+    var z = document.getElementById("tokenized_tweets").style.display ;
+    var w = document.getElementById("arabic_sentiment").style.display ;
+    if (x == "block" && y == "block" && z == "block" && w == "block") {
+        document.getElementById("showDataButton").style.display = "none";
+        document.getElementById("hideDataButton").style.display = "block";
+    }
     document.getElementById("arabic_sentiment_words").style.display = "block";
     document.getElementById("showArabicSentimentWordsButton").style.display = "none";
     document.getElementById("hideArabicSentimentWordsButton").style.display = "block";
@@ -78,6 +93,7 @@ function hideData() {
     document.getElementById("processed_tweets").style.display = "none";
     document.getElementById("tokenized_tweets").style.display = "none";
     document.getElementById("arabic_sentiment").style.display = "none";
+    document.getElementById("arabic_sentiment_words").style.display = "none";
     document.getElementById("showDataButton").style.display = "block";
     document.getElementById("hideDataButton").style.display = "none";
     document.getElementById("showOriginalTweetsButton").style.display = "block";
@@ -88,6 +104,8 @@ function hideData() {
     document.getElementById("hideTokenizedTweetsButton").style.display = "none";
     document.getElementById("showArabicSentimentButton").style.display = "block";
     document.getElementById("hideArabicSentimentButton").style.display = "none";
+    document.getElementById("showArabicSentimentWordsButton").style.display = "block";
+    document.getElementById("hideArabicSentimentWordsButton").style.display = "none";
 }
 function hideOriginalTweets() {
     //check if the other tables are hidden or not
@@ -140,6 +158,20 @@ function hideArabicSentiment() {
     document.getElementById("arabic_sentiment").style.display = "none";
     document.getElementById("showArabicSentimentButton").style.display = "block";
     document.getElementById("hideArabicSentimentButton").style.display = "none";
+}
+function hideArabicSentimentWords() {
+    //check if the other tables are hidden or not
+    var x = document.getElementById("original_tweets").style.display ;
+    var y = document.getElementById("processed_tweets").style.display ;
+    var z = document.getElementById("tokenized_tweets").style.display ;
+    var w = document.getElementById("arabic_sentiment").style.display ;
+    if (x == "none" && y == "none" && z == "none" && w == "none") {
+      document.getElementById("showDataButton").style.display = "block";
+      document.getElementById("hideDataButton").style.display = "none";
+    }
+    document.getElementById("arabic_sentiment_words").style.display = "none";
+    document.getElementById("showArabicSentimentWordsButton").style.display = "block";
+    document.getElementById("hideArabicSentimentWordsButton").style.display = "none";
 }
 
 function showGraphs() {
