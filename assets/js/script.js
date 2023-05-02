@@ -67,6 +67,11 @@ function showArabicSentiment() {
     document.getElementById("showArabicSentimentButton").style.display = "none";
     document.getElementById("hideArabicSentimentButton").style.display = "block";
 }
+function showArabicSentimentWords(){
+    document.getElementById("arabic_sentiment_words").style.display = "block";
+    document.getElementById("showArabicSentimentWordsButton").style.display = "none";
+    document.getElementById("hideArabicSentimentWordsButton").style.display = "block";
+}
 // function to hide the tables
 function hideData() {
     document.getElementById("original_tweets").style.display = "none";
