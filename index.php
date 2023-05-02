@@ -320,6 +320,7 @@ fclose($fp2);
                             positive++;
                             // assign positive probability to positive probabilities array
                             probabilities.push('.round(100 * $analysis['probability'], 1).');
+                            console.log("positive :",'.implode(",",$analysis).');
                         </script>';
                 } else {
                     $sentiment = 'سلبي';
@@ -329,6 +330,7 @@ fclose($fp2);
                             negative++;
                             // assign negative probability to negative probabilities array
                             probabilities.push('.(-1)*(round(100 * $analysis['probability'], 1)).');
+                            console.log("negative :",'.implode($analysis).');
                         </script>';
                 }
 
