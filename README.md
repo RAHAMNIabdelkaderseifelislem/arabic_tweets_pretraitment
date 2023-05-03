@@ -66,6 +66,7 @@ tables :<br>
 ![tweets after deleting the english tweets and every thing that is not table shown](screenshots/ProcessedTweets.png)
 ![tokenization of each tweet table shows](screenshots/Tokens.png)
 ![the arabic sentiment analysis table shown](screenshots/SentimentAnalysis.png)
+![the sentiment analysis](screenshots/word_analysis.png)
 
 graphs :
 ![the number of words per tweet bar chart shown](screenshots/WordsNumberChart.png)
