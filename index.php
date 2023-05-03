@@ -122,6 +122,7 @@ fclose($fp2);
         var probabilities = []
         var positive = 0
         var negative = 0
+        var word_prob = []
     </script>
 </head>
 <body id="top">
@@ -418,6 +419,9 @@ fclose($fp2);
                             $bgcolor   = '#FFF0FF';
                         }
                         echo '<tr><td bgcolor="'.$bgcolor.'" align="center" rowspan="'.$count.'"> <font face="Tahoma">'.$tweet['id'].'</font></td>';
+                        echo '<script>
+                                var word_probability = [];
+                            </script>';
                         foreach ($tweet['word_sentiment'] as $word => $sentiment) {
                             if($sentiment['score']>= 0){
                                 $sentiments = 'ايجابي';
@@ -430,9 +434,17 @@ fclose($fp2);
                             echo '<td bgcolor="'.$bgcolor.'" align="center">'.$sentiments.'</td>';
                             $probability = sprintf('%0.1f', round(100 * $sentiment['score'], 1));
                             echo '<td bgcolor="'.$bgcolor.'" align="center" style="direction: ltr;">'.$probability.' % </td></tr>';
+                            echo '<script>
+                                    word_probability.push('.round(100 * $sentiment['score'], 1).');
+                                </script>';
                             
+
                             $j++;
                         }
+                        echo '<script>
+                                // assign the word probabilities to the tweet probabilities array
+                                word_prob.push(word_probability);
+                            </script>';
                         $i++;
                     }
                     echo '</table></center></div>';
@@ -614,8 +626,8 @@ fclose($fp2);
                         datasets: [{
                             label: 'عدد الكلمات في كل تغريدة',
                             data: numWords,
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
                             borderWidth: 1
                         }]
                     },
@@ -639,11 +651,11 @@ fclose($fp2);
                             label: 'تحليل المشاعر',
                             data: [positive, negative],
                             backgroundColor: [
-                                'rgba(2, 91, 238, 0.1)',
+                                'rgba(75, 192, 192, 0.1)',
                                 'rgba(238, 91, 2, 0.2)'
                             ],
                             borderColor: [
-                                'rgba(2, 91, 238, 1)',
+                                'rgba(75, 192, 192, 1)',
                                 'rgba(238, 91, 2, 1)'
                             ],
                             borderWidth: 1
@@ -682,7 +694,7 @@ fclose($fp2);
                         label: 'احتمالات التحليلات',
                         data: probabilities,
                         backgroundColor: probabilities.map(function(p) {
-                          return p < 0 ? '#ff6384' : '#36a2eb';
+                          return p < 0 ? '#ee5b02' : '#4BC0C0 ';
                         })
                     }]
                 };
