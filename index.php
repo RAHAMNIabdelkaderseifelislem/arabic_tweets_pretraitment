@@ -408,6 +408,16 @@ fclose($fp2);
                         $tweet = json_decode($json, true);
                         
                         $j = 0;
+                        // count the number of words in the tweet
+                        $count = count($tweet['word_sentiment']);
+                        // get the sentiment of each tweet
+                        $tweet_sentiment = $tweet['sentiment'];
+                        if ($tweet_sentiment == 'ايجابي') {
+                            $bgcolor   = '#E0F0FF';
+                        } else {
+                            $bgcolor   = '#FFF0FF';
+                        }
+                        echo '<tr><td bgcolor="'.$bgcolor.'" align="center" rowspan="'.$count.'"> <font face="Tahoma">'.$tweet['id'].'</font></td>';
                         foreach ($tweet['word_sentiment'] as $word => $sentiment) {
                             if($sentiment['score']>= 0){
                                 $sentiments = 'ايجابي';
@@ -416,11 +426,10 @@ fclose($fp2);
                                 $sentiments = 'سلبي';
                                 $bgcolor   = '#FFF0FF';
                             }
-                            echo '<tr><td bgcolor="'.$bgcolor.'" align="center">'.$tweet['id'].'</td>';
                             echo '<td bgcolor="'.$bgcolor.'" align="center">'.$word.'</td>';
                             echo '<td bgcolor="'.$bgcolor.'" align="center">'.$sentiments.'</td>';
                             $probability = sprintf('%0.1f', round(100 * $sentiment['score'], 1));
-                            echo '<td bgcolor="'.$bgcolor.'" align="center">'.$probability.'</td></tr>';
+                            echo '<td bgcolor="'.$bgcolor.'" align="center" style="direction: ltr;">'.$probability.' % </td></tr>';
                             
                             $j++;
                         }
