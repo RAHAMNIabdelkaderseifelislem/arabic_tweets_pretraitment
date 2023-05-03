@@ -639,12 +639,12 @@ fclose($fp2);
                             label: 'تحليل المشاعر',
                             data: [positive, negative],
                             backgroundColor: [
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(255, 99, 132, 0.2)'
+                                'rgba(2, 91, 238, 0.1)',
+                                'rgba(238, 91, 2, 0.2)'
                             ],
                             borderColor: [
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(255, 99, 132, 1)'
+                                'rgba(2, 91, 238, 1)',
+                                'rgba(238, 91, 2, 1)'
                             ],
                             borderWidth: 1
                         }]

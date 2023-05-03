@@ -29,7 +29,7 @@ input[type="file"] {
 label {
 	display: block;
 	position: relative;
-	background-color: #025bee;
+	background-color: #025bea;
 	color: #ffffff;
 	font-size: 1.1em;
 	text-align: center;
@@ -69,7 +69,7 @@ label {
 button {
 	display: block;
 	position: relative;
-	background-color: #025bee;
+	background-color: #025bea;
 	color: #ffffff;
 	font-size: 1.3em;
 	text-align: center;
@@ -82,7 +82,7 @@ button {
 
 button:hover {
 	background-color: #ffffff;
-	color: #025bee;
+	color: #025bea;
 	border-radius: 0.5em;
 }
 
@@ -174,7 +174,7 @@ nav ul li a {
 
 nav ul li a:hover {
 	background-color: #ffffff;
-	color: #025bee;
+	color: #025bea;
 	border-radius: 0.5em;
 }
 
@@ -194,14 +194,14 @@ nav .logo a:hover {
 .dropdown {
 	position: relative;
 	display: inline-block;
-	background-color: #025bee;
+	background-color: #025bea;
   }
   
 .dropdown-content {
 	display: none;
 	position: absolute;
 	z-index: 1;
-	background-color: #025bee;
+	background-color: #025bea;
 	padding: 0.5em 0;
 	border-radius: 0.5em;
 	margin: 0.8em 0;
@@ -220,7 +220,7 @@ nav .logo a:hover {
   
 .dropdown-content a:hover {
 	background-color: #ffffff;
-	color: #025bee;
+	color: #025bea;
   }
 
 .upl{
