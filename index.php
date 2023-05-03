@@ -439,8 +439,20 @@ fclose($fp2);
                     $tweet_sentiment = $tweet['sentiment'];
                     if ($tweet_sentiment == 'إيجابي') {
                         $bgcolor   = '#E0F0FF';
+                        echo '<script>
+                                // add 1 to positive tweets
+                                positive++;
+                                // assign positive probability to positive probabilities array
+                                probabilities.push('.round(100 * $tweet['probability'], 1).');
+                            </script>';
                     } else {
                         $bgcolor   = '#FFF0FF';
+                        echo '<script>
+                                // add 1 to negative tweets
+                                negative++;
+                                // assign negative probability to negative probabilities array
+                                probabilities.push('.(-1)*(round(100 * $tweet['probability'], 1)).');
+                            </script>';
                     }
                     // print the tweet text, sentiment, and probability
                     echo <<< END
@@ -657,17 +669,17 @@ fclose($fp2);
                 var chart = new Chart(ctx, {
                     type: 'pie',
                     data: {
-                        labels: ['ايجابي', 'سلبي'],
+                        labels: ['إيجابي', 'سلبي'],
                         datasets: [{
                             label: 'تحليل المشاعر',
                             data: [positive, negative],
                             backgroundColor: [
-                                'rgba(75, 192, 192, 0.1)',
-                                'rgba(238, 91, 2, 0.2)'
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(255, 99, 132, 0.2)'
                             ],
                             borderColor: [
                                 'rgba(75, 192, 192, 1)',
-                                'rgba(238, 91, 2, 1)'
+                                'rgba(255, 99, 132, 1)'
                             ],
                             borderWidth: 1
                         }]
@@ -705,7 +717,7 @@ fclose($fp2);
                         label: 'احتمالات التحليلات',
                         data: probabilities,
                         backgroundColor: probabilities.map(function(p) {
-                          return p < 0 ? '#ee5b02' : '#4BC0C0 ';
+                          return p < 0 ? '#ff6384' : '#36a2eb';
                         })
                     }]
                 };
