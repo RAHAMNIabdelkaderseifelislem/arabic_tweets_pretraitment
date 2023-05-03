@@ -139,8 +139,8 @@ fclose($fp2);
                     <a href="#original">التغريدات الأصلية</a>
                     <a href="#processed">التغريدات المعالجة</a>
                     <a href="#tokenize">ترميز التغريدات</a>
-                    <a href="#analysis">تحليل المشاعر</a>
                     <a href="#analysis_words">تحليل الكلمات</a>
+                    <a href="#analysis">تحليل المشاعر</a>
                 </div>
             </li>
             <li class ="dropdown">
@@ -359,7 +359,7 @@ fclose($fp2);
                 $count = count($tweet['word_sentiment']);
                 // get the sentiment of each tweet
                 $tweet_sentiment = $tweet['sentiment'];
-                if ($tweet_sentiment == 'ايجابي') {
+                if ($tweet_sentiment == 'إيجابي') {
                     $bgcolor   = '#E0F0FF';
                 } else {
                     $bgcolor   = '#FFF0FF';
