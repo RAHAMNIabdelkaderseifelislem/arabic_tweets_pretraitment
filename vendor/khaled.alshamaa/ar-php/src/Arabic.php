@@ -4192,7 +4192,7 @@ class Arabic
         
         #initialise the dictionary
         foreach ($words as $word) {
-            $dict[$word] = array('score' => 0, 'pos' => 0, 'neg' => 0);
+            $dict[$word] = array('score' => 0);
         }
 
         # set initial scores
@@ -4236,7 +4236,6 @@ class Arabic
                 $score += -1 * (float)$this->logOdd[$sel_stem];
 
                 // update the dictionary
-                $dict[$word]['neg'] += 1;
                 $dict[$word]['score'] += -1 * (float)$this->logOdd[$sel_stem];
                 
                 $negationFlag = false;
@@ -4245,7 +4244,6 @@ class Arabic
                 $score += $this->logOdd[$sel_stem];
 
                 # update the dictionary
-                $dict[$word]['pos'] += 1;
                 $dict[$word]['score'] += (float)$this->logOdd[$sel_stem];
             }
 

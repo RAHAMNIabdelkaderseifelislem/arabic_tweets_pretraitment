@@ -5,29 +5,19 @@
     "probability": "50.4",
     "word_sentiment": {
         "بعد": {
-            "score": -0.065,
-            "pos": 1,
-            "neg": 0
+            "score": -0.065
         },
         "الكورونا": {
-            "score": -0.039,
-            "pos": 1,
-            "neg": 0
+            "score": -0.039
         },
         "نشوف": {
-            "score": 0.052,
-            "pos": 1,
-            "neg": 0
+            "score": 0.052
         },
         "الحوار": {
-            "score": 0.094,
-            "pos": 1,
-            "neg": 0
+            "score": 0.094
         },
         "ده": {
-            "score": -0.058,
-            "pos": 1,
-            "neg": 0
+            "score": -0.058
         }
     }
 }
