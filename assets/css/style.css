@@ -272,6 +272,10 @@ nav .logo a:hover {
 	margin: 1.25em 1.87em;
 }
 
+#numWordsChart{
+	padding: 4.25em 1.87em;
+}
+
 .pieChart{
 	padding: 4.25em 1.87em;
 }
