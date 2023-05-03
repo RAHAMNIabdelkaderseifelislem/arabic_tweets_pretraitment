@@ -284,6 +284,7 @@ fclose($fp2);
             <br><br>
 
             <?php
+            $i = 1;
             // add sentiment analysis and save it in .json files
             foreach ($original_data as $review) {
                     $analysis = $Arabic->arSentiment($review[0]);
@@ -291,6 +292,11 @@ fclose($fp2);
                     $word_sentiment = $analysis['dict'];
 
                     $probability = sprintf('%0.1f', round(100 * $analysis['probability'], 1));
+                    if ($analysis['isPositive']){
+                        $sentiment = 'إيجابي';
+                    } else {
+                        $sentiment = 'سلبي';
+                    }
                     // encode the data of the tweet in json format with tweet id, tweet text, sentiment, probability, and word sentiment add utf8_encode to fix arabic encoding
                     $tweet_data = json_encode(array('id' => $i, 'text' => $review[0], 'sentiment' => $sentiment, 'probability' => $probability, 'word_sentiment' => $word_sentiment),JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                     
@@ -305,6 +311,91 @@ fclose($fp2);
                 }
             ?>
 
+        <br><br>
+        <div id="analysis_words" style = "<?php
+                if (isset($_POST["submit"])) {
+                    echo "display: block;";
+                } else {
+                    echo "display: none;";
+                }
+            ?>">
+            <!-- print the words and there sentiment and score -->
+            <?php
+            echo <<< END
+            <h2>تحليل المشاعر لكل كلمة</h2>
+            <br><br>
+            <button id="showArabicSentimentWordsButton" onclick="showArabicSentimentWords()">إظهار تحليل المشاعر لكل كلمة</button>
+            <button id="hideArabicSentimentWordsButton" onclick="hideArabicSentimentWords()" style="display: none;">إخفاء تحليل المشاعر لكل كلمة</button>
+            <div style="display: none;" id="arabic_sentiment_words">
+            <center>
+            <table border="0" cellspacing="2" cellpadding="5">
+                <tr>
+                <th  align="center">
+                    <b><font>التغريدة</font></b>
+                </th>
+                <th  align="center">
+                    <b><font>الكلمة</font></b>
+                </th>
+                <th align="center">
+                    <b><font>المشاعر</font></b>
+                </th>
+                <th align="center">
+                    <b><font>الاحتمال</font></b>
+                </th>
+                </tr>
+            END;
+            // read the tweets from the tweets folder file by file
+            $files = glob('uploads/tweets/*.json');
+            // loop through the files
+            $i = 0;
+            foreach ($files as $file) {
+                // get the file content
+                $json = file_get_contents($file);
+                // decode the json file
+                $tweet = json_decode($json, true);
+                
+                $j = 0;
+                // count the number of words in the tweet
+                $count = count($tweet['word_sentiment']);
+                // get the sentiment of each tweet
+                $tweet_sentiment = $tweet['sentiment'];
+                if ($tweet_sentiment == 'ايجابي') {
+                    $bgcolor   = '#E0F0FF';
+                } else {
+                    $bgcolor   = '#FFF0FF';
+                }
+                echo '<tr><td bgcolor="'.$bgcolor.'" align="center" rowspan="'.$count.'"> <font face="Tahoma">'.$tweet['id'].'</font></td>';
+                echo '<script>
+                        var word_probability = [];
+                    </script>';
+                foreach ($tweet['word_sentiment'] as $word => $sentiment) {
+                    if($sentiment['score']>= 0){
+                        $sentiments = 'ايجابي';
+                        $bgcolor   = '#E0F0FF';
+                    } else {
+                        $sentiments = 'سلبي';
+                        $bgcolor   = '#FFF0FF';
+                    }
+                    echo '<td bgcolor="'.$bgcolor.'" align="center">'.$word.'</td>';
+                    echo '<td bgcolor="'.$bgcolor.'" align="center">'.$sentiments.'</td>';
+                    $probability = sprintf('%0.1f', round(100 * $sentiment['score'], 1));
+                    echo '<td bgcolor="'.$bgcolor.'" align="center" style="direction: ltr;">'.$probability.' % </td></tr>';
+                    echo '<script>
+                            word_probability.push('.round(100 * $sentiment['score'], 1).');
+                        </script>';
+                    
+
+                    $j++;
+                }
+                echo '<script>
+                        // assign the word probabilities to the tweet probabilities array
+                        word_prob.push(word_probability);
+                    </script>';
+                $i++;
+            }
+            echo '</table></center></div>';
+            ?>
+        </div>
             <div id="analysis" style = "<?php
                         if (isset($_POST["submit"])) {
                             echo "display: block;";
@@ -334,143 +425,41 @@ fclose($fp2);
                     </th>
                     </tr>
                 END;
-                // analyze sentiment of each tweet and store it in a new array
-                $i = 1;
-                foreach ($original_data as $review) {
-                    $analysis = $Arabic->arSentiment($review[0]);
+                // read the tweets from the tweets folder file by file
+                $files = glob('uploads/tweets/*.json');
+                // loop through the files
+                $i = 0;
+                foreach ($files as $file) {
+                    // get the file content
+                    $json = file_get_contents($file);
+                    // decode the json file
+                    $tweet = json_decode($json, true);
                     
-                    if ($analysis['isPositive']) {
-                        $sentiment = 'ايجابي';
+                    // get the sentiment of each tweet
+                    $tweet_sentiment = $tweet['sentiment'];
+                    if ($tweet_sentiment == 'إيجابي') {
                         $bgcolor   = '#E0F0FF';
-                        echo '<script>
-                                // add 1 to positive tweets
-                                positive++;
-                                // assign positive probability to positive probabilities array
-                                probabilities.push('.round(100 * $analysis['probability'], 1).');
-                            </script>';
-                            // get the word that made the tweet positive
-                            $word_sentiment = $analysis['dict'];
-
                     } else {
-                        $sentiment = 'سلبي';
                         $bgcolor   = '#FFF0FF';
-                        echo '<script>
-                                // add 1 to negative tweets
-                                negative++;
-                                // assign negative probability to negative probabilities array
-                                probabilities.push('.(-1)*(round(100 * $analysis['probability'], 1)).');
-                            </script>';
-                            // get the word that made the tweet negative
-                            $word_sentiment = $analysis['dict'];
-
                     }
-
-                    $probability = sprintf('%0.1f', round(100 * $analysis['probability'], 1));
-                    
-                    echo '<tr><td bgcolor="'.$bgcolor.'" align="right">';
-                    echo '<font face="Tahoma">'.$review[0].'</font></td>';
-                    echo '<td bgcolor="'.$bgcolor.'" align="center">'.$sentiment.'</td>';
-                    echo '<td bgcolor="'.$bgcolor.'" align="center">'.$probability.'%</td></tr>';
-                    // encode the data of the tweet in json format with tweet id, tweet text, sentiment, probability, and word sentiment add utf8_encode to fix arabic encoding
-                    $tweet_data = json_encode(array('id' => $i, 'text' => $review[0], 'sentiment' => $sentiment, 'probability' => $probability, 'word_sentiment' => $word_sentiment),JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-                    
-                    // save it into a .json file at uploads folder check if the folder exists if not create it and create the tweets folder inside it
-                    if (!file_exists('uploads/tweets')) {
-                        mkdir('uploads/tweets', 0777, true);
-                    }
-                    file_put_contents('uploads/tweets/tweet'.$i.'.json', $tweet_data);
-
-
+                    // print the tweet text, sentiment, and probability
+                    echo <<< END
+                    <tr bgcolor="$bgcolor">
+                        <td align="center" width="50%">
+                            <font>$tweet[text]</font>
+                        </td>
+                        <td align="center" width="25%">
+                            <font>$tweet_sentiment</font>
+                        </td>
+                        <td align="center" width="25%" style = "direction:ltr;">
+                            <font>$tweet[probability] %</font>
+                        </td>
+                    </tr>
+                    END;
                     $i++;
                 }
-
                 echo '</table></center></div>';
                 ?>
-                </div>
-                <br><br>
-                <div id="analysis_words" style = "<?php
-                        if (isset($_POST["submit"])) {
-                            echo "display: block;";
-                        } else {
-                            echo "display: none;";
-                        }
-                    ?>">
-                    <!-- print the words and there sentiment and score -->
-                    <?php
-                    echo <<< END
-                    <h2>تحليل المشاعر لكل كلمة</h2>
-                    <br><br>
-                    <button id="showArabicSentimentWordsButton" onclick="showArabicSentimentWords()">إظهار تحليل المشاعر لكل كلمة</button>
-                    <button id="hideArabicSentimentWordsButton" onclick="hideArabicSentimentWords()" style="display: none;">إخفاء تحليل المشاعر لكل كلمة</button>
-                    <div style="display: none;" id="arabic_sentiment_words">
-                    <center>
-                    <table border="0" cellspacing="2" cellpadding="5">
-                        <tr>
-                        <th  align="center">
-                            <b><font>التغريدة</font></b>
-                        </th>
-                        <th  align="center">
-                            <b><font>الكلمة</font></b>
-                        </th>
-                        <th align="center">
-                            <b><font>المشاعر</font></b>
-                        </th>
-                        <th align="center">
-                            <b><font>الاحتمال</font></b>
-                        </th>
-                        </tr>
-                    END;
-                    // read the tweets from the tweets folder file by file
-                    $files = glob('uploads/tweets/*.json');
-                    // loop through the files
-                    $i = 0;
-                    foreach ($files as $file) {
-                        // get the file content
-                        $json = file_get_contents($file);
-                        // decode the json file
-                        $tweet = json_decode($json, true);
-                        
-                        $j = 0;
-                        // count the number of words in the tweet
-                        $count = count($tweet['word_sentiment']);
-                        // get the sentiment of each tweet
-                        $tweet_sentiment = $tweet['sentiment'];
-                        if ($tweet_sentiment == 'ايجابي') {
-                            $bgcolor   = '#E0F0FF';
-                        } else {
-                            $bgcolor   = '#FFF0FF';
-                        }
-                        echo '<tr><td bgcolor="'.$bgcolor.'" align="center" rowspan="'.$count.'"> <font face="Tahoma">'.$tweet['id'].'</font></td>';
-                        echo '<script>
-                                var word_probability = [];
-                            </script>';
-                        foreach ($tweet['word_sentiment'] as $word => $sentiment) {
-                            if($sentiment['score']>= 0){
-                                $sentiments = 'ايجابي';
-                                $bgcolor   = '#E0F0FF';
-                            } else {
-                                $sentiments = 'سلبي';
-                                $bgcolor   = '#FFF0FF';
-                            }
-                            echo '<td bgcolor="'.$bgcolor.'" align="center">'.$word.'</td>';
-                            echo '<td bgcolor="'.$bgcolor.'" align="center">'.$sentiments.'</td>';
-                            $probability = sprintf('%0.1f', round(100 * $sentiment['score'], 1));
-                            echo '<td bgcolor="'.$bgcolor.'" align="center" style="direction: ltr;">'.$probability.' % </td></tr>';
-                            echo '<script>
-                                    word_probability.push('.round(100 * $sentiment['score'], 1).');
-                                </script>';
-                            
-
-                            $j++;
-                        }
-                        echo '<script>
-                                // assign the word probabilities to the tweet probabilities array
-                                word_prob.push(word_probability);
-                            </script>';
-                        $i++;
-                    }
-                    echo '</table></center></div>';
-                    ?>
                 </div>
             </center>
             </div>
