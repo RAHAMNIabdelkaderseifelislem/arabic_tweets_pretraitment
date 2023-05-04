@@ -60,17 +60,20 @@ first look :
 after upload :
 ![full page after upload](screenshots/fullpageafterUpload.png)
 
+history :
+![history page](screenshots/historypage.png)
 tables :<br>
 
 ![Original tweets table shown](screenshots/OriginalTweets.png)
 ![tweets after deleting the english tweets and every thing that is not table shown](screenshots/ProcessedTweets.png)
 ![tokenization of each tweet table shows](screenshots/Tokens.png)
-![the arabic sentiment analysis table shown](screenshots/SentimentAnalysis.png)
 ![the sentiment analysis](screenshots/word_analysis.png)
+![the arabic sentiment analysis table shown](screenshots/SentimentAnalysis.png)
 
 graphs :
 ![the number of words per tweet bar chart shown](screenshots/WordsNumberChart.png)
 ![the positive and negative tweets pie chart shown](screenshots/Positive_vs_NegativeChart.png)
+![the number of positive and negative words bar chart shown](screenshots/word_analysisChart.png)
 ![the probability of each tweet to be positive or negative bar chart shown](screenshots/ProbabilityChart.png)
 
 ## credits
