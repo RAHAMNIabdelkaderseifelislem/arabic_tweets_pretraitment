@@ -27,11 +27,15 @@ if (isset($_POST["submit"])) {
         mkdir("uploads");
     }
 
+    // save the original data to a file
+    $file_org = fopen("uploads/tweets.csv", "w");
+
     // Save the processed data to a file
     $file = fopen("uploads/tweets-ar.csv", "w");
 
     foreach ($original_data as $row) {
 
+        fputcsv($file_org, $row);
         // Remove non-Arabic letters
         $row = preg_replace('/[^\x{0600}-\x{06FF}]/u', ' ', $row);
 
