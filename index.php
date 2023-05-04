@@ -539,34 +539,11 @@ fclose($fp2);
                             END;
                         }
                         ?>
-                        <button id="showWordsSentimentButton" onclick="showWordsSentiment()">إظهار الرسم البياني</button>
-                        <button id="hideWordsSentimentButton" onclick="hideWordsSentiment()" style="display: none;">إخفاء الرسم البياني</button>
 
                     </select>
-                    <script>
-                        // get the selected tweet id
-                        var tweet_id = document.getElementById("displaywordsgraph").value;
-                        // get the file content
-                        var json = $.ajax({
-                            url: 'uploads/tweets/tweet' + tweet_id + '.json',
-                            dataType: 'json',
-                            async: false
-                        }).responseText;
-                        // decode the json file
-                        var tweet = JSON.parse(json);
-                        // get the words and sentiments
-                        var words = tweet['word_sentiment'];
-                        /*example of content of words array
-                            "عاجل": {
-                                "score": 0.028
-                            },
-                            "منظمه": {
-                                "score": 0.38
-                            }
-                        */
-                       // change the scores to % by multiplying it to 100
-                       
-                    </script>
+                    <button id="showWordsSentimentButton" onclick="showWordsSentiment()">إظهار الرسم البياني</button>
+                    <button id="hideWordsSentimentButton" onclick="hideWordsSentiment()" style="display: none;">إخفاء الرسم البياني</button>
+                    <canvas id="barWordsSentimentChart"></canvas>
                 </div>
             </div>
             <script>
@@ -806,7 +783,57 @@ fclose($fp2);
                     data: chartData,
                     options: chartOptions
                 });
-
+                var currentChart = null;
+                function displaygraph(){
+                        // get the selected tweet id
+                        var tweet_id = document.getElementById("displaywordsgraph").value;
+                        // get the file content
+                        var json = $.ajax({
+                            url: 'uploads/tweets/tweet' + tweet_id + '.json',
+                            dataType: 'json',
+                            async: false
+                        }).responseText;
+                        // decode the json file
+                        var tweet = JSON.parse(json);
+                        // get the words and sentiments
+                        var words = tweet['word_sentiment'];
+                        /*example of content of words array
+                            "عاجل": {
+                                "score": 0.028
+                            },
+                            "منظمه": {
+                                "score": 0.38
+                            }
+                        */
+                        // get the words and scores 
+                        var words_array = [];
+                        for (var word in words) {
+                            // change score to %
+                            words[word]['score'] = words[word]['score'] * 100;
+                            words_array.push([word, words[word]['score']]);
+                        }
+                        // display the graph
+                        var ctx = document.getElementById('barWordsSentimentChart').getContext('2d');
+                        var currentChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: words_array.map(function(value, index) {
+                                    return value[0];
+                                }),
+                                datasets: [{
+                                    label: 'الكلمات والمشاعر',
+                                    borderColor: 'rgb(255, 99, 132)',
+                                    data: words_array.map(function(value, index) {
+                                        return value[1];
+                                    }),
+                                    backgroundColor: words_array.map(function(value, index) {
+                                        return value[1] < 0 ? '#ff6384' : '#36a2eb';
+                                    })
+                                }]
+                            },
+                            options: {}
+                        });
+                    }
             </script>
             </center>
         </div>
