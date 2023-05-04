@@ -183,12 +183,35 @@ fclose($fp2);
             <br><br>
             <form method="post" enctype="multipart/form-data">
                     <input type="file" name="csv_file" id="upload-button" accept=".csv" />
-                    <label for="upload-button"><i class="fa-solid fa-upload"></i>&nbsp; اختر ملف للمعالجة</label>
+                    <label for="upload-button" style = "<?php
+                    if (isset($_POST["submit"])) {
+                        echo "display: none;";
+                    } else {
+                        echo "display: block;";
+                    }
+                ?>"><i class="fa-solid fa-upload"></i>&nbsp; اختر ملف للمعالجة</label>
                     <div id="error"></div>
                     <div id="image-display"></div>
-                <button class="submitBtn" type="submit" name="submit">يُقدِّم</button>
+                <button class="submitBtn" type="submit" name="submit" style = "<?php
+                    if (isset($_POST["submit"])) {
+                        echo "display: none;";
+                    } else {
+                        echo "display: block;";
+                    }
+                    // check if the input file is not empty
+                    if (empty($_FILES['csv_file']['name'])) {
+                        echo "pointer-events: none;";
+                    }
+                 ?>">يُقدِّم</button>
                 <!-- button to delete uploaded file -->
-                <button class="deleteBtn" type="button" onclick="location.href='index.php'">إلغاء</button>
+                <button class="deleteBtn" type="button" onclick="deletefunc()" <?php
+                // change position of the button from left to center if the file is uploaded
+                    if (isset($_POST["submit"])) {
+                        echo "style='margin-left: 37%;'";
+                    } else {
+                        echo "style='margin-left: 0%;'";
+                    }
+                ?>>إلغاء</button>
             </form>
         </div>
         <div id="history" class="his" style = "<?php

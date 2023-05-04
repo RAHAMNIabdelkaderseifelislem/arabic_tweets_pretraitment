@@ -280,6 +280,15 @@ function hideProbabilities() {
     document.getElementById("hideProbabilitiesButton").style.display = "none";
 }
 
+// delete button function
+function deletefunc(){
+  // message to confirm deletion
+  var r = confirm("هل أنت متأكد من حذف البيانات؟");
+  if (r == true) {
+    location.href="index.php";
+  }
+}
+
 // drag and drop
 let uploadButton = document.getElementById("upload-button");
 let chosenImage = document.getElementById("chosen-image");
