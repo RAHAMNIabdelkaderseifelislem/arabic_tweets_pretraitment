@@ -148,6 +148,7 @@ fclose($fp2);
                 <div class="dropdown-content">
                     <a href="#numWordsChart">عدد الكلمات</a>
                     <a href="#sentimentChart">المشاعر</a>
+                    <a href="#wordsSentiments">الكلمات</a>
                     <a href="#probabilityChart">الاحتمالات</a>
                 </div>
             </li>
@@ -510,19 +511,12 @@ fclose($fp2);
                 </div>
             </div>
             <br><br>
-            <div class="probabilities" id="probabilityChart">
-                <h3>الاحتمالات</h3>
-                <button id="showProbabilitiesButton" onclick="showProbabilities()">إظهار الرسم البياني</button>
-                <button id="hideProbabilitiesButton" onclick="hideProbabilities()" style="display: none;">إخفاء الرسم البياني</button>
-                <div id="probabilities" style="display: none;">
-                    <canvas id="barProbabilitiesChart"></canvas>
-                </div>
-            </div>
-            <br><br>
-            <div class="wordsSentiment" id="wordsSentiment">
+            <div class="wordsSentiment" id="wordsSentiments">
                 <h3>الكلمات والمشاعر</h3>
-                <div id="wordsSentiment" >
-                    <select id="displaywordsgraph" onchange="displaygraph()">
+                <button id="showWordsSentimentButton" onclick="showWordsSentiment()">إظهار الرسم البياني</button>
+                <button id="hideWordsSentimentButton" onclick="hideWordsSentiment()" style="display: none;">إخفاء الرسم البياني</button>
+                <div id="wordsSentiment" style="dispaly: none;" >
+                    <select id="displaywordsgraph">
                         <!-- get options from tweets folder -->
                         <?php
                         $files = glob('uploads/tweets/*.json');
@@ -541,9 +535,16 @@ fclose($fp2);
                         ?>
 
                     </select>
-                    <button id="showWordsSentimentButton" onclick="showWordsSentiment()">إظهار الرسم البياني</button>
-                    <button id="hideWordsSentimentButton" onclick="hideWordsSentiment()" style="display: none;">إخفاء الرسم البياني</button>
                     <canvas id="barWordsSentimentChart"></canvas>
+                </div>
+            </div>
+            <br><br>
+            <div class="probabilities" id="probabilityChart">
+                <h3>الاحتمالات</h3>
+                <button id="showProbabilitiesButton" onclick="showProbabilities()">إظهار الرسم البياني</button>
+                <button id="hideProbabilitiesButton" onclick="hideProbabilities()" style="display: none;">إخفاء الرسم البياني</button>
+                <div id="probabilities" style="display: none;">
+                    <canvas id="barProbabilitiesChart"></canvas>
                 </div>
             </div>
             <script>
@@ -559,6 +560,8 @@ fclose($fp2);
                     document.getElementById("hidePieSentimentButton").style.display = "block";
                     document.getElementById("showProbabilitiesButton").style.display = "none";
                     document.getElementById("hideProbabilitiesButton").style.display = "block";
+                    document.getElementById("showWordsSentimentButton").style.display = "none";
+                    document.getElementById("hideWordsSentimentButton").style.display = "block";
                 }
 
                 function hideGraphs() {
@@ -573,13 +576,16 @@ fclose($fp2);
                     document.getElementById("hidePieSentimentButton").style.display = "none";
                     document.getElementById("showProbabilitiesButton").style.display = "block";
                     document.getElementById("hideProbabilitiesButton").style.display = "none";
+                    document.getElementById("showWordsSentimentButton").style.display = "block";
+                    document.getElementById("hideWordsSentimentButton").style.display = "none";
                 }
 
                 function showNumWords() {
                 var y = document.getElementById("pieSentiment").style.display;
                 var z = document.getElementById("probabilities").style.display;
+                var x = document.getElementById("wordsSentiment").style.display;
                 //check if the other charts are hidden or not
-                if (y == "block" && z == "block") {
+                if (y == "block" && z == "block" && x == "block") {
                     document.getElementById("showGraphsButton").style.display = "none";
                     document.getElementById("hideGraphsButton").style.display = "block";
                 }
@@ -591,8 +597,9 @@ fclose($fp2);
                 function hideNumWords() {
                 var y = document.getElementById("pieSentiment").style.display;
                 var z = document.getElementById("probabilities").style.display;
+                var x = document.getElementById("wordsSentiment").style.display;
                 //check if the other charts are hidden or not
-                if (y == "none" && z == "none") {
+                if (y == "none" && z == "none" && x == "none") {
                     document.getElementById("showGraphsButton").style.display = "block";
                     document.getElementById("hideGraphsButton").style.display = "none";
                 }
@@ -604,8 +611,9 @@ fclose($fp2);
                 function showPieSentiment() {
                 var y = document.getElementById("numWords").style.display;
                 var z = document.getElementById("probabilities").style.display;
+                var x = document.getElementById("wordsSentiment").style.display;
                 //check if the other charts are hidden or not
-                if (y == "block" && z == "block") {
+                if (y == "block" && z == "block" && x == "block") {
                     document.getElementById("showGraphsButton").style.display = "none";
                     document.getElementById("hideGraphsButton").style.display = "block";
                 }
@@ -617,8 +625,9 @@ fclose($fp2);
                 function hidePieSentiment() {
                 var y = document.getElementById("numWords").style.display;
                 var z = document.getElementById("probabilities").style.display;
+                var x = document.getElementById("wordsSentiment").style.display;
                 //check if the other charts are hidden or not
-                if (y == "none" && z == "none") {
+                if (y == "none" && z == "none" && x == "none") {
                     document.getElementById("showGraphsButton").style.display = "block";
                     document.getElementById("hideGraphsButton").style.display = "none";
                 }
@@ -630,8 +639,9 @@ fclose($fp2);
                 function showProbabilities() {
                 var y = document.getElementById("numWords").style.display;
                 var z = document.getElementById("pieSentiment").style.display;
+                var x = document.getElementById("wordsSentiment").style.display;
                 //check if the other charts are hidden or not
-                if (y == "block" && z == "block") {
+                if (y == "block" && z == "block" && x == "block") {
                     document.getElementById("showGraphsButton").style.display = "none";
                     document.getElementById("hideGraphsButton").style.display = "block";
                 }
@@ -643,8 +653,9 @@ fclose($fp2);
                 function hideProbabilities() {
                 var y = document.getElementById("numWords").style.display;
                 var z = document.getElementById("pieSentiment").style.display;
+                var x = document.getElementById("wordsSentiment").style.display;
                 //check if the other charts are hidden or not
-                if (y == "none" && z == "none") {
+                if (y == "none" && z == "none" && x == "none") {
                     document.getElementById("showGraphsButton").style.display = "block";
                     document.getElementById("hideGraphsButton").style.display = "none";
                 }
@@ -652,6 +663,35 @@ fclose($fp2);
                     document.getElementById("showProbabilitiesButton").style.display = "block";
                     document.getElementById("hideProbabilitiesButton").style.display = "none";
                 }
+
+                function showWordsSentiment() {
+                var y = document.getElementById("numWords").style.display;
+                var z = document.getElementById("pieSentiment").style.display;
+                var x = document.getElementById("probabilities").style.display;
+                //check if the other charts are hidden or not
+                if (y == "none" && z == "none" && x == "none") {
+                    document.getElementById("showGraphsButton").style.display = "block";
+                    document.getElementById("hideGraphsButton").style.display = "none";
+                }
+                    document.getElementById("wordsSentiment").style.display = "block";
+                    document.getElementById("showWordsSentimentButton").style.display = "none";
+                    document.getElementById("hideWordsSentimentButton").style.display = "block";
+                }
+
+                function hideWordsSentiment() {
+                var y = document.getElementById("numWords").style.display;
+                var z = document.getElementById("pieSentiment").style.display;
+                var x = document.getElementById("probabilities").style.display;
+                //check if the other charts are hidden or not
+                if (y == "none" && z == "none" && x == "none") {
+                    document.getElementById("showGraphsButton").style.display = "block";
+                    document.getElementById("hideGraphsButton").style.display = "none";
+                }
+                    document.getElementById("wordsSentiment").style.display = "none";
+                    document.getElementById("showWordsSentimentButton").style.display = "block";
+                    document.getElementById("hideWordsSentimentButton").style.display = "none";
+                }
+
   
                 // Get the number of words in each tweet from the PHP code
                 var numWords = <?php echo json_encode($num_words); ?>;
@@ -740,6 +780,10 @@ fclose($fp2);
                     return 'التغريدة ' + label;
                 });
 
+                // get every probability devide it by 100
+                probabilities = probabilities.map(function(probability) {
+                    return probability / 100;
+                });
                 // create the chart data
                 var chartData = {
                     labels: labels,
@@ -783,11 +827,14 @@ fclose($fp2);
                     data: chartData,
                     options: chartOptions
                 });
+                var ctx = document.getElementById('barWordsSentimentChart').getContext('2d');
                 var currentChart = null;
+                // add event listener to the button
+                document.getElementById("displaywordsgraph").addEventListener("change", displaygraph);
                 function displaygraph(){
-                        // get the selected tweet id
-                        var tweet_id = document.getElementById("displaywordsgraph").value;
-                        // get the file content
+                    // get the selected tweet id
+                    var tweet_id = document.getElementById("displaywordsgraph").value;
+                    // get the file content
                         var json = $.ajax({
                             url: 'uploads/tweets/tweet' + tweet_id + '.json',
                             dataType: 'json',
@@ -795,6 +842,8 @@ fclose($fp2);
                         }).responseText;
                         // decode the json file
                         var tweet = JSON.parse(json);
+                        // get the sentiment of the tweet
+                        var sentiment = tweet['sentiment'];
                         // get the words and sentiments
                         var words = tweet['word_sentiment'];
                         /*example of content of words array
@@ -812,17 +861,19 @@ fclose($fp2);
                             words[word]['score'] = words[word]['score'] * 100;
                             words_array.push([word, words[word]['score']]);
                         }
+                        if(currentChart != null){
+                            currentChart.destroy();
+                        }
                         // display the graph
-                        var ctx = document.getElementById('barWordsSentimentChart').getContext('2d');
-                        var currentChart = new Chart(ctx, {
+                        currentChart = new Chart(ctx, {
                             type: 'bar',
                             data: {
                                 labels: words_array.map(function(value, index) {
                                     return value[0];
                                 }),
                                 datasets: [{
-                                    label: 'الكلمات والمشاعر',
-                                    borderColor: 'rgb(255, 99, 132)',
+                                    label: 'الكلمات والمشاعر', // if the sentiment is positive the color is blue else it is red
+                                    borderColor: sentiment == 'إيجابي' ? '#36a2eb' : '#ff6384',
                                     data: words_array.map(function(value, index) {
                                         return value[1];
                                     }),
