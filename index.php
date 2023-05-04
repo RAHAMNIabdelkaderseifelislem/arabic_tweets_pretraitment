@@ -137,9 +137,15 @@ fclose($fp2);
         </div>
         <ul class="nav-links">
             <li><a href="#upload">الرئيسية</a></li>
-            <li class ="dropdown">
+            <li class ="dropdown" style = "<?php
+                    if (isset($_POST["submit"])) {
+                        echo "display: block;";
+                    } else {
+                        echo "display: none;";
+                    }
+                ?>">
                 <a href="#res">النتيجة</a>
-                <div class="dropdown-content">
+                <div class="dropdown-content" >
                     <a href="#original">التغريدات الأصلية</a>
                     <a href="#processed">التغريدات المعالجة</a>
                     <a href="#tokenize">ترميز التغريدات</a>
@@ -147,7 +153,13 @@ fclose($fp2);
                     <a href="#analysis">تحليل المشاعر</a>
                 </div>
             </li>
-            <li class ="dropdown">
+            <li class ="dropdown" style = "<?php
+                    if (isset($_POST["submit"])) {
+                        echo "display: block;";
+                    } else {
+                        echo "display: none;";
+                    }
+                ?>">
                 <a href="#graph">الرسوم البيانية</a>
                 <div class="dropdown-content">
                     <a href="#numWordsChart">عدد الكلمات</a>
@@ -156,6 +168,13 @@ fclose($fp2);
                     <a href="#probabilityChart">الاحتمالات</a>
                 </div>
             </li>
+            <li style = "<?php
+                    if (isset($_POST["submit"])) {
+                        echo "display: none;";
+                    } else {
+                        echo "display: block;";
+                    }
+                ?>"><a href="history.php">التاريخ</a></li>
         </ul>
     </nav>
     <br><br>
@@ -167,8 +186,24 @@ fclose($fp2);
                     <label for="upload-button"><i class="fa-solid fa-upload"></i>&nbsp; اختر ملف للمعالجة</label>
                     <div id="error"></div>
                     <div id="image-display"></div>
-                <button type="submit" name="submit">يُقدِّم</button>
+                <button class="submitBtn" type="submit" name="submit">يُقدِّم</button>
+                <!-- button to delete uploaded file -->
+                <button class="deleteBtn" type="button" onclick="location.href='index.php'">إلغاء</button>
             </form>
+        </div>
+        <div id="history" class="his" style = "<?php
+                    if (isset($_POST["submit"])) {
+                        echo "display: none;";
+                    } else {
+                        echo "display: block;";
+                    }
+                ?>">
+            <center>
+                <br><br>
+                <h1>آخر معالجة</h1>
+                <br><br><br>
+                <button onclick="location.href='history.php'">آخر معالجة</button>
+            </center>
         </div>
         <br><br>
         <!-- display the results -->

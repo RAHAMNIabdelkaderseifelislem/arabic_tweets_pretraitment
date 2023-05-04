@@ -86,6 +86,38 @@ button:hover {
 	border-radius: 0.5em;
 }
 
+/* submit and delete buttons 
+submit on the left and delete on the right
+*/
+.submitBtn {
+	float: right;
+	margin-left: 1.25em;
+	background-color: #025bea;
+	color: #e0e0e0;
+
+}
+
+.submitBtn:hover {
+	background-color: #ffffff;
+	color: #025bea;
+	border-radius: 0.5em;
+}
+
+
+.deleteBtn {
+	float: left;
+	margin-right: 1.25em;
+	background-color: #ff3030;
+	color: #e0e0e0;
+}
+
+.deleteBtn:hover {
+	background-color: #ffffff;
+	color: #ff3030;
+	border-radius: 0.5em;
+}
+
+
 select {
 	display: block;
 	position: relative;

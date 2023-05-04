@@ -134,7 +134,7 @@ fclose($fp2);
             <a href="#top"><h4>تحليل المشاعر</h4></a>
         </div>
         <ul class="nav-links">
-            <li><a href="#upload">الرئيسية</a></li>
+            <li><a href="index.php">الرئيسية</a></li>
             <li class ="dropdown">
                 <a href="#res">النتيجة</a>
                 <div class="dropdown-content">
