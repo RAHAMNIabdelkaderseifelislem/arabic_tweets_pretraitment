@@ -518,6 +518,57 @@ fclose($fp2);
                     <canvas id="barProbabilitiesChart"></canvas>
                 </div>
             </div>
+            <br><br>
+            <div class="wordsSentiment" id="wordsSentiment">
+                <h3>الكلمات والمشاعر</h3>
+                <div id="wordsSentiment" >
+                    <select id="displaywordsgraph" onchange="displaygraph()">
+                        <!-- get options from tweets folder -->
+                        <?php
+                        $files = glob('uploads/tweets/*.json');
+                        foreach ($files as $file) {
+                            // get the file content
+                            $json = file_get_contents($file);
+                            // decode the json file
+                            $tweet = json_decode($json, true);
+                            // get the id of each tweet
+                            $tweet_id = $tweet['id'];
+                            // print the tweet
+                            echo <<< END
+                            <option value="$tweet_id">التغريدة $tweet_id</option>
+                            END;
+                        }
+                        ?>
+                        <button id="showWordsSentimentButton" onclick="showWordsSentiment()">إظهار الرسم البياني</button>
+                        <button id="hideWordsSentimentButton" onclick="hideWordsSentiment()" style="display: none;">إخفاء الرسم البياني</button>
+
+                    </select>
+                    <script>
+                        // get the selected tweet id
+                        var tweet_id = document.getElementById("displaywordsgraph").value;
+                        // get the file content
+                        var json = $.ajax({
+                            url: 'uploads/tweets/tweet' + tweet_id + '.json',
+                            dataType: 'json',
+                            async: false
+                        }).responseText;
+                        // decode the json file
+                        var tweet = JSON.parse(json);
+                        // get the words and sentiments
+                        var words = tweet['word_sentiment'];
+                        /*example of content of words array
+                            "عاجل": {
+                                "score": 0.028
+                            },
+                            "منظمه": {
+                                "score": 0.38
+                            }
+                        */
+                       // change the scores to % by multiplying it to 100
+                       
+                    </script>
+                </div>
+            </div>
             <script>
                 function showGraphs() {
                     document.getElementById("numWords").style.display = "block";
