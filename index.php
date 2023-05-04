@@ -888,7 +888,51 @@ fclose($fp2);
                     options: chartOptions
                 });
                 var ctx = document.getElementById('barWordsSentimentChart').getContext('2d');
-                var currentChart = null;
+                var json = $.ajax({
+                    url: 'uploads/tweets/tweet1.json',
+                    dataType: 'json',
+                    async: false
+                }).responseText;
+                // decode the json file
+                var tweet = JSON.parse(json);
+                // get the sentiment of the tweet
+                var sentiment = tweet['sentiment'];
+                // get the words and sentiments
+                var words = tweet['word_sentiment'];
+                /*example of content of words array
+                    "عاجل": {
+                        "score": 0.028
+                    },
+                    "منظمه": {
+                        "score": 0.38
+                    }
+                */
+                // get the words and scores 
+                var words_array = [];
+                for (var word in words) {
+                    // change score to %
+                    words[word]['score'] = words[word]['score'] * 100;
+                    words_array.push([word, words[word]['score']]);
+                }
+                var currentChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: words_array.map(function(value, index) {
+                                    return value[0];
+                                }),
+                                datasets: [{
+                                    label: 'الكلمات والمشاعر', // if the sentiment is positive the color is blue else it is red
+                                    borderColor: sentiment == 'إيجابي' ? '#36a2eb' : '#ff6384',
+                                    data: words_array.map(function(value, index) {
+                                        return value[1];
+                                    }),
+                                    backgroundColor: words_array.map(function(value, index) {
+                                        return value[1] < 0 ? '#ff6384' : '#36a2eb';
+                                    })
+                                }]
+                            },
+                            options: {}
+                        });
                 // add event listener to the button
                 document.getElementById("displaywordsgraph").addEventListener("change", displaygraph);
                 function displaygraph(){
