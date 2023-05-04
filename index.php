@@ -515,7 +515,7 @@ fclose($fp2);
                 <h3>الكلمات والمشاعر</h3>
                 <button id="showWordsSentimentButton" onclick="showWordsSentiment()">إظهار الرسم البياني</button>
                 <button id="hideWordsSentimentButton" onclick="hideWordsSentiment()" style="display: none;">إخفاء الرسم البياني</button>
-                <div id="wordsSentiment" style="dispaly: none;" >
+                <div id="wordsSentiment" style="display: none;" >
                     <select id="displaywordsgraph">
                         <!-- get options from tweets folder -->
                         <?php
@@ -552,6 +552,7 @@ fclose($fp2);
                     document.getElementById("numWords").style.display = "block";
                     document.getElementById("pieSentiment").style.display = "block";
                     document.getElementById("probabilities").style.display = "block";
+                    document.getElementById("wordsSentiment").style.display = "block";
                     document.getElementById("showGraphsButton").style.display = "none";
                     document.getElementById("hideGraphsButton").style.display = "block";
                     document.getElementById("showNumWordsButton").style.display = "none";
@@ -570,6 +571,7 @@ fclose($fp2);
                     document.getElementById("numWords").style.display = "none";
                     document.getElementById("pieSentiment").style.display = "none";
                     document.getElementById("probabilities").style.display = "none";
+                    document.getElementById("wordsSentiment").style.display = "none";
                     document.getElementById("showNumWordsButton").style.display = "block";
                     document.getElementById("hideNumWordsButton").style.display = "none";
                     document.getElementById("showPieSentimentButton").style.display = "block";
