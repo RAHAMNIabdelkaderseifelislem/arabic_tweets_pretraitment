@@ -198,10 +198,6 @@ fclose($fp2);
                     } else {
                         echo "display: block;";
                     }
-                    // check if the input file is not empty
-                    if (empty($_FILES['csv_file']['name'])) {
-                        echo "pointer-events: none;";
-                    }
                  ?>">يُقدِّم</button>
                 <!-- button to delete uploaded file -->
                 <button class="deleteBtn" type="button" onclick="deletefunc()" <?php
