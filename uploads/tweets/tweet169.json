@@ -1,0 +1,11 @@
+{
+    "id": 169,
+    "text": " حل 😍",
+    "sentiment": "إيجابي",
+    "probability": "51.9",
+    "word_sentiment": {
+        "حل": {
+            "score": 0.078
+        }
+    }
+}

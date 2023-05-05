@@ -42,59 +42,59 @@ if (isset($_POST["submit"])) {
         fputcsv($file, $row);
         $processed_data[] = $row;
     }
-}
-// open the file that we uploaded and read it
-$fp = fopen('uploads/tweets-ar.csv', 'r');
-
-// create a new file to write the tokens to
-$fp2 = fopen('uploads/tokens.csv', 'w');
-
-// count the number of lines in the file to know how many tweets we have
-$linecount = 0;
-while(!feof($fp)){
-    $line = fgets($fp);
-    $linecount++;
-}
-
-// create an array to count the number of words in each tweet
-$num_words = array();
-
-
-// create an array to contain the lines of the file
-$lines = array();
-
-// go back to the beginning of the file
-rewind($fp);
-
-$i = 1;
-// read the file line by line
-while(($line = fgetcsv($fp)) !== FALSE) {
-    // create an array to store the words in each tweet
-    $words = array();
-    //word count
-    $word_count = 0;
-    // split the line into an array of words
-    $words = preg_split('/\s+/', $line[0]);
-    // loop through the words
-    foreach($words as $word) {
-        // write the word to the file
-        // check if the word is emoji or not
-        if (strlen($word)>1){
-            fputcsv($fp2, array($i.",".$word));
-            $word_count++;
-        }
+    // open the file that we uploaded and read it if the file exists
+    $fp = fopen('uploads/tweets-ar.csv', 'r');
+    
+    // create a new file to write the tokens to
+    $fp2 = fopen('uploads/tokens.csv', 'w');
+    
+    // count the number of lines in the file to know how many tweets we have
+    $linecount = 0;
+    while(!feof($fp)){
+        $line = fgets($fp);
+        $linecount++;
     }
-    $lines[] = $words;
-    // count the number of words in each tweet
-    $num_words[] = $word_count;
-    $i++;
+    
+    // create an array to count the number of words in each tweet
+    $num_words = array();
+    
+    
+    // create an array to contain the lines of the file
+    $lines = array();
+    
+    // go back to the beginning of the file
+    rewind($fp);
+    
+    $i = 1;
+    // read the file line by line
+    while(($line = fgetcsv($fp)) !== FALSE) {
+        // create an array to store the words in each tweet
+        $words = array();
+        //word count
+        $word_count = 0;
+        // split the line into an array of words
+        $words = preg_split('/\s+/', $line[0]);
+        // loop through the words
+        foreach($words as $word) {
+            // write the word to the file
+            // check if the word is emoji or not
+            if (strlen($word)>1){
+                fputcsv($fp2, array($i.",".$word));
+                $word_count++;
+            }
+        }
+        $lines[] = $words;
+        // count the number of words in each tweet
+        $num_words[] = $word_count;
+        $i++;
+    }
+    // prepare the array for sentiment analysis that save the word and its probability in the same array
+    $words_prob = array();
+    
+    // close the files
+    fclose($fp);
+    fclose($fp2);
 }
-// prepare the array for sentiment analysis that save the word and its probability in the same array
-$words_prob = array();
-
-// close the files
-fclose($fp);
-fclose($fp2);
 
 ?>
 <!DOCTYPE html>

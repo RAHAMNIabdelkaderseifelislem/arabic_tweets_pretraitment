@@ -1,0 +1,11 @@
+{
+    "id": 750,
+    "text": "\tعرر😍😍😭😭 #PERSONAWelcomeParty #BoyWithRealViews",
+    "sentiment": "سلبي",
+    "probability": "55.1",
+    "word_sentiment": {
+        "عرر": {
+            "score": -0.203
+        }
+    }
+}

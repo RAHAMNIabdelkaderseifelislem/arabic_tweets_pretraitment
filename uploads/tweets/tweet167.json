@@ -1,0 +1,11 @@
+{
+    "id": 167,
+    "text": " ورد 🌹",
+    "sentiment": "سلبي",
+    "probability": "52.0",
+    "word_sentiment": {
+        "ورد": {
+            "score": -0.081
+        }
+    }
+}

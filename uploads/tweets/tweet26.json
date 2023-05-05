@@ -1,0 +1,11 @@
+{
+    "id": 26,
+    "text": " كذب 😂",
+    "sentiment": "سلبي",
+    "probability": "54.4",
+    "word_sentiment": {
+        "كذب": {
+            "score": -0.176
+        }
+    }
+}

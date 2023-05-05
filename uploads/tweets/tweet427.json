@@ -1,0 +1,11 @@
+{
+    "id": 427,
+    "text": " زق 😂",
+    "sentiment": "سلبي",
+    "probability": "51.8",
+    "word_sentiment": {
+        "زق": {
+            "score": -0.074
+        }
+    }
+}

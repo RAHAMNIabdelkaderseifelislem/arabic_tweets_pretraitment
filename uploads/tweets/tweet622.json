@@ -1,0 +1,11 @@
+{
+    "id": 622,
+    "text": " لا 😁",
+    "sentiment": "سلبي",
+    "probability": "51.4",
+    "word_sentiment": {
+        "لا": {
+            "score": -0.056
+        }
+    }
+}

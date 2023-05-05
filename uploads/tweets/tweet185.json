@@ -1,0 +1,14 @@
+{
+    "id": 185,
+    "text": " #London #Strert #وائل_كفوري في شوارع #لندن ❤ #waelkfouryradio",
+    "sentiment": "سلبي",
+    "probability": "51.5",
+    "word_sentiment": {
+        "في": {
+            "score": -0.017
+        },
+        "شوارع": {
+            "score": -0.044
+        }
+    }
+}
