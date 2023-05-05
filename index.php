@@ -444,6 +444,10 @@ if (isset($_POST["submit"])) {
             END;
             // read the tweets from the tweets folder file by file
             $files = glob('uploads/tweets/*.json');
+            // sort the files by tweet ID
+            usort($files, function($a, $b) {
+                return strnatcmp($a, $b);
+            });
             // loop through the files
             $i = 0;
             foreach ($files as $file) {
@@ -525,6 +529,10 @@ if (isset($_POST["submit"])) {
                 END;
                 // read the tweets from the tweets folder file by file read in ascending order
                 $files = glob('uploads/tweets/*.json');
+                // sort the files by tweet ID
+                usort($files, function($a, $b) {
+                    return strnatcmp($a, $b);
+                });
                 // loop through the files
                 $i = 0;
                 foreach ($files as $file) {
@@ -615,6 +623,10 @@ if (isset($_POST["submit"])) {
                         <!-- get options from tweets folder -->
                         <?php
                         $files = glob('uploads/tweets/*.json');
+                        // sort the files by tweet ID
+                        usort($files, function($a, $b) {
+                            return strnatcmp($a, $b);
+                        });
                         foreach ($files as $file) {
                             // get the file content
                             $json = file_get_contents($file);

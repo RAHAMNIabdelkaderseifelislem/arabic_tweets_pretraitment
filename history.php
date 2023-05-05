@@ -252,32 +252,30 @@ fclose($fp2);
             <br><br>
 
             <?php
-            if(isset($_POST["submit"])){
-                $i = 1;
-                // add sentiment analysis and save it in .json files
-                foreach ($original_data as $review) {
-                        $analysis = $Arabic->arSentiment($review[0]);
-                        
-                        $word_sentiment = $analysis['dict'];
+            $i = 1;
+            // add sentiment analysis and save it in .json files
+            foreach ($original_data as $review) {
+                    $analysis = $Arabic->arSentiment($review[0]);
+                    
+                    $word_sentiment = $analysis['dict'];
 
-                        $probability = sprintf('%0.1f', round(100 * $analysis['probability'], 1));
-                        if ($analysis['isPositive']){
-                            $sentiment = 'إيجابي';
-                        } else {
-                            $sentiment = 'سلبي';
-                        }
-                        // encode the data of the tweet in json format with tweet id, tweet text, sentiment, probability, and word sentiment add utf8_encode to fix arabic encoding
-                        $tweet_data = json_encode(array('id' => $i, 'text' => $review[0], 'sentiment' => $sentiment, 'probability' => $probability, 'word_sentiment' => $word_sentiment),JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-                        
-                        // save it into a .json file at uploads folder check if the folder exists if not create it and create the tweets folder inside it
-                        if (!file_exists('uploads/tweets')) {
-                            mkdir('uploads/tweets', 0777, true);
-                        }
-                        file_put_contents('uploads/tweets/tweet'.$i.'.json', $tweet_data);
-
-
-                        $i++;
+                    $probability = sprintf('%0.1f', round(100 * $analysis['probability'], 1));
+                    if ($analysis['isPositive']){
+                        $sentiment = 'إيجابي';
+                    } else {
+                        $sentiment = 'سلبي';
                     }
+                    // encode the data of the tweet in json format with tweet id, tweet text, sentiment, probability, and word sentiment add utf8_encode to fix arabic encoding
+                    $tweet_data = json_encode(array('id' => $i, 'text' => $review[0], 'sentiment' => $sentiment, 'probability' => $probability, 'word_sentiment' => $word_sentiment),JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                    
+                    // save it into a .json file at uploads folder check if the folder exists if not create it and create the tweets folder inside it
+                    if (!file_exists('uploads/tweets')) {
+                        mkdir('uploads/tweets', 0777, true);
+                    }
+                    file_put_contents('uploads/tweets/tweet'.$i.'.json', $tweet_data);
+
+
+                    $i++;
             }
             ?>
 
@@ -310,6 +308,10 @@ fclose($fp2);
             END;
             // read the tweets from the tweets folder file by file
             $files = glob('uploads/tweets/*.json');
+            // sort the files by tweet ID
+            usort($files, function($a, $b) {
+                return strnatcmp($a, $b);
+            });
             // loop through the files
             $i = 0;
             foreach ($files as $file) {
@@ -385,6 +387,10 @@ fclose($fp2);
                 END;
                 // read the tweets from the tweets folder file by file
                 $files = glob('uploads/tweets/*.json');
+                // sort the files by tweet ID
+                usort($files, function($a, $b) {
+                    return strnatcmp($a, $b);
+                });
                 // loop through the files
                 $i = 0;
                 foreach ($files as $file) {
@@ -469,6 +475,10 @@ fclose($fp2);
                         <!-- get options from tweets folder -->
                         <?php
                         $files = glob('uploads/tweets/*.json');
+                        // sort the files by tweet ID
+                        usort($files, function($a, $b) {
+                            return strnatcmp($a, $b);
+                        });
                         foreach ($files as $file) {
                             // get the file content
                             $json = file_get_contents($file);
