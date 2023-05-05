@@ -486,7 +486,7 @@ if (isset($_POST["submit"])) {
                     </th>
                     </tr>
                 END;
-                // read the tweets from the tweets folder file by file
+                // read the tweets from the tweets folder file by file read in ascending order
                 $files = glob('uploads/tweets/*.json');
                 // loop through the files
                 $i = 0;
