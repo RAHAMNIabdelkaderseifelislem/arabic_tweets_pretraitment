@@ -25,6 +25,13 @@ if (isset($_POST["submit"])) {
     // Create the uploads directory if it doesn't exist
     if (!is_dir("uploads")) {
         mkdir("uploads");
+    }else{
+        // empty the tweets folder
+        $files = glob('uploads/tweets/*.json'); // get all .json files
+        foreach($files as $file){ // iterate files
+            if(is_file($file))
+            unlink($file); // delete file
+        }
     }
 
     // save the original data to a file
@@ -169,6 +176,21 @@ if (isset($_POST["submit"])) {
                 </div>
             </li>
             <li style = "<?php
+                    // check if uploads folder exists
+                    if (!file_exists('uploads')) {
+                        echo "display: none;";
+                    }else{
+                        // check if it contains files
+                        $files = glob('uploads/*');
+                        if ( $files !== false ){
+                            $filecount = count( $files );
+                            if ($filecount == 0){
+                                echo "display: none;";
+                            }else{
+                                echo "display: block;";
+                            }
+                        }
+                    }
                     if (isset($_POST["submit"])) {
                         echo "display: none;";
                     } else {
@@ -211,6 +233,21 @@ if (isset($_POST["submit"])) {
             </form>
         </div>
         <div id="history" class="his" style = "<?php
+                    // check if uploads folder exists
+                    if (!file_exists('uploads')) {
+                        echo "display: none;";
+                    }else{
+                        // check if it contains files
+                        $files = glob('uploads/*');
+                        if ( $files !== false ){
+                            $filecount = count( $files );
+                            if ($filecount == 0){
+                                echo "display: none;";
+                            }else{
+                                echo "display: block;";
+                            }
+                        }
+                    }
                     if (isset($_POST["submit"])) {
                         echo "display: none;";
                     } else {
