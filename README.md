@@ -80,6 +80,12 @@ graphs :
 ![the number of positive and negative words bar chart shown](screenshots/word_analysisChart.png)
 ![the probability of each tweet to be positive or negative bar chart shown](screenshots/ProbabilityChart.png)
 
+## demo video
+
+<video width="600" height="200" controls preload>
+    <source src="screenshots/full_website_showdown.mp4"></source>
+</video>
+
 ## credits
 
 - [khaled alshamaa](https://github.com/khaled-alshamaa/ar-php)
