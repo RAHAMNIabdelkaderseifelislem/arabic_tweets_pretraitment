@@ -1,0 +1,11 @@
+{
+    "id": 183,
+    "text": " كده 😁",
+    "sentiment": "سلبي",
+    "probability": "54.6",
+    "word_sentiment": {
+        "كده": {
+            "score": -0.186
+        }
+    }
+}

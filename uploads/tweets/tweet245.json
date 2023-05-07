@@ -1,0 +1,11 @@
+{
+    "id": 245,
+    "text": " أحبك ",
+    "sentiment": "إيجابي",
+    "probability": "54.6",
+    "word_sentiment": {
+        "احبك": {
+            "score": 0.185
+        }
+    }
+}

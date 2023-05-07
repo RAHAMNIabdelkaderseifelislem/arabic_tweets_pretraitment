@@ -1,0 +1,11 @@
+{
+    "id": 182,
+    "text": " يارب 🙏",
+    "sentiment": "سلبي",
+    "probability": "51.5",
+    "word_sentiment": {
+        "يارب": {
+            "score": -0.06
+        }
+    }
+}

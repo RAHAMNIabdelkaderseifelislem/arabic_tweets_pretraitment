@@ -1,0 +1,11 @@
+{
+    "id": 440,
+    "text": "\tلاا M 😭",
+    "sentiment": "سلبي",
+    "probability": "51.4",
+    "word_sentiment": {
+        "لاا": {
+            "score": -0.056
+        }
+    }
+}
