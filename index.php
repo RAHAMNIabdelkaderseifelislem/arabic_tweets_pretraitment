@@ -256,10 +256,10 @@ if (isset($_POST["submit"])) {
                     $(document).ready(function() {
                         $('input[type="file"]').change(function(e) {
                             var fileName = e.target.files[0].name;
-                            $('#image-display').html('<p style="color: #fff;">' + fileName + '</p>');
+                            $('#image-display').html('<p>' + fileName + '</p>');
                         });
                     });
-                    
+
                 </script>
             </form>
         </div>
