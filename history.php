@@ -211,10 +211,10 @@ fclose($fp2);
             <?php endif; ?>
             </div>
             <div id="tokenize"  >
-                <h2>ترميز التغريدات</h2>
+                <h2>تقطيع التغريدات</h2>
                 <br><br>
-                <button id="showTokenizedTweetsButton" onclick="showTokenizedTweets()">إظهار الترميز</button>
-                <button id="hideTokenizedTweetsButton" onclick="hideTokenizedTweets()" style="display: none;">إخفاء الترميز</button>
+                <button id="showTokenizedTweetsButton" onclick="showTokenizedTweets()">إظهار التقطيع</button>
+                <button id="hideTokenizedTweetsButton" onclick="hideTokenizedTweets()" style="display: none;">إخفاء التقطيع</button>
                 <br><br>
                 <table id ="tokenized_tweets" style="display: none;">
                     <thead>
@@ -236,7 +236,7 @@ fclose($fp2);
                                     ?>
                                         <?php
                                             if (strlen($word)>1){
-                                                echo $word.';'; 
+                                                echo $word.', '; 
                                             } 
                                         ?>
                                     <?php 
