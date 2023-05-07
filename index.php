@@ -240,6 +240,26 @@ if (isset($_POST["submit"])) {
                             }
                         });
                     });
+                    // check if file is .csv
+                    $(document).ready(function() {
+                        $('input[type="file"]').change(function() {
+                            var ext = $(this).val().split('.').pop().toLowerCase();
+                            if ($.inArray(ext, ['csv']) == -1) {
+                                $('#error').slideDown("slow");
+                                $('#submit').attr('disabled', true);
+                            } else {
+                                $('#error').slideUp("slow");
+                            }
+                        });
+                    });
+                    // display uploaded file
+                    $(document).ready(function() {
+                        $('input[type="file"]').change(function(e) {
+                            var fileName = e.target.files[0].name;
+                            $('#image-display').html('<p style="color: #fff;">' + fileName + '</p>');
+                        });
+                    });
+                    
                 </script>
             </form>
         </div>
