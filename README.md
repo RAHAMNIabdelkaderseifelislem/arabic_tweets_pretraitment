@@ -26,6 +26,7 @@ it is a website that is built using php and javascript and it uses composer to m
         - composer/         // the composer packages
         - khaled.alshamaa/  // the arabic sentiment analysis API
     - index.php              // the main entry point for the application
+    - history.php            // the latest treated tweets page
     - composer.json          // the composer configuration file
     - composer.lock          // the composer lock file
 ```
