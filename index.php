@@ -214,7 +214,7 @@ if (isset($_POST["submit"])) {
                 ?>"><i class="fa-solid fa-upload"></i>&nbsp; اختر ملف للمعالجة</label>
                     <div id="error"></div>
                     <div id="image-display"></div>
-                <button class="submitBtn" type="submit" name="submit" style = "<?php
+                <button class="submitBtn" type="submit" id="submit" name="submit" disabled="true" style = "<?php
                     if (isset($_POST["submit"])) {
                         echo "display: none;";
                     } else {
@@ -230,6 +230,17 @@ if (isset($_POST["submit"])) {
                         echo "style='margin-left: 0%;'";
                     }
                 ?>>إلغاء</button>
+                <script>
+                    // disable submit button if no file is selected
+                    $(document).ready(function() {
+                        $('#submit').attr('disabled', true);
+                        $('input[type="file"]').change(function() {
+                            if ($(this).val()) {
+                                $('#submit').removeAttr('disabled');
+                            }
+                        });
+                    });
+                </script>
             </form>
         </div>
         <div id="history" class="his" style = "<?php
