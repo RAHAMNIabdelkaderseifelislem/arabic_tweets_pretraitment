@@ -17,6 +17,71 @@ function showData() {
     document.getElementById("hideArabicSentimentButton").style.display = "block";
     document.getElementById("showArabicSentimentWordsButton").style.display = "none";
     document.getElementById("hideArabicSentimentWordsButton").style.display = "block";
+    // fadeout the show data button and fade in the hide data button and tables
+    document.getElementById("showDataButton").animate([
+        // keyframes
+        { opacity: '1' },
+        { opacity: '0' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("hideDataButton").animate([
+        // keyframes
+        { opacity: '0' },
+        { opacity: '1' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("original_tweets").animate([
+        // keyframes
+        { transform: 'translateY(0px)' },
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("processed_tweets").animate([
+        // keyframes
+        { transform: 'translateY(0px)' },
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("tokenized_tweets").animate([
+        // keyframes
+        { transform: 'translateY(0px)' },
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("arabic_sentiment").animate([
+        // keyframes
+        { transform: 'translateY(0px)' }, 
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("arabic_sentiment_words").animate([
+        // keyframes
+        { transform: 'translateY(0px)' },
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+
 }
 function showOriginalTweets() {
     // check if the other tables are displayed or not
@@ -31,6 +96,35 @@ function showOriginalTweets() {
     document.getElementById("original_tweets").style.display = "block";
     document.getElementById("showOriginalTweetsButton").style.display = "none";
     document.getElementById("hideOriginalTweetsButton").style.display = "block";
+    // fadeout the show data button and fade in the hide data button and table
+    document.getElementById("showOriginalTweetsButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("hideOriginalTweetsButton").animate([
+        // keyframes
+        { opacity: '0' },
+        { opacity: '1' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("original_tweets").animate([
+        // keyframes
+        { transform: 'translateY(0px)' },
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    
 }
 function showProcessedTweets() {
     // check if the other tables are displayed or not
@@ -45,6 +139,34 @@ function showProcessedTweets() {
     document.getElementById("processed_tweets").style.display = "block";
     document.getElementById("showProcessedTweetsButton").style.display = "none";
     document.getElementById("hideProcessedTweetsButton").style.display = "block";
+    // fadeout the show data button and fade in the hide data button and table
+    document.getElementById("showProcessedTweetsButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("hideProcessedTweetsButton").animate([
+        // keyframes
+        { opacity: '0' },
+        { opacity: '1' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("processed_tweets").animate([
+        // keyframes
+        { transform: 'translateY(0px)' },
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
 }
 function showTokenizedTweets() {
     // check if the other tables are displayed or not
@@ -59,6 +181,34 @@ function showTokenizedTweets() {
     document.getElementById("tokenized_tweets").style.display = "block";
     document.getElementById("showTokenizedTweetsButton").style.display = "none";
     document.getElementById("hideTokenizedTweetsButton").style.display = "block";
+    // fadeout the show data button and fade in the hide data button and table
+    document.getElementById("showTokenizedTweetsButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("hideTokenizedTweetsButton").animate([
+        // keyframes
+        { opacity: '0' },
+        { opacity: '1' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("tokenized_tweets").animate([
+        // keyframes
+        { transform: 'translateY(0px)' },
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
 }
 function showArabicSentiment() {
     // check if the other tables are displayed or not
@@ -73,6 +223,34 @@ function showArabicSentiment() {
     document.getElementById("arabic_sentiment").style.display = "block";
     document.getElementById("showArabicSentimentButton").style.display = "none";
     document.getElementById("hideArabicSentimentButton").style.display = "block";
+    // fadeout the show data button and fade in the hide data button and table
+    document.getElementById("showArabicSentimentButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("hideArabicSentimentButton").animate([
+        // keyframes
+        { opacity: '0' },
+        { opacity: '1' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("arabic_sentiment").animate([
+        // keyframes
+        { transform: 'translateY(0px)' },
+        { transform: 'translateY(-100px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
 }
 function showArabicSentimentWords(){
     var x = document.getElementById("original_tweets").style.display ;
@@ -86,6 +264,35 @@ function showArabicSentimentWords(){
     document.getElementById("arabic_sentiment_words").style.display = "block";
     document.getElementById("showArabicSentimentWordsButton").style.display = "none";
     document.getElementById("hideArabicSentimentWordsButton").style.display = "block";
+    // fadeout the show data button and fade in the hide data button and table
+    document.getElementById("showArabicSentimentWordsButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("hideArabicSentimentWordsButton").animate([
+        // keyframes
+        { opacity: '0' },
+        { opacity: '1' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    document.getElementById("arabic_sentiment_words").animate([
+        // keyframes
+        { transform: 'translateY(-100px)' },
+        { transform: 'translateY(0px)' }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1
+    });
+    
 }
 // function to hide the tables
 function hideData() {
@@ -106,7 +313,27 @@ function hideData() {
     document.getElementById("hideArabicSentimentButton").style.display = "none";
     document.getElementById("showArabicSentimentWordsButton").style.display = "block";
     document.getElementById("hideArabicSentimentWordsButton").style.display = "none";
+    // fadeout the hide data button and fade in the show data button
+    document.getElementById("showDataButton").animate([
+          // keyframes
+          { opacity: '0' },
+          { opacity: '1' }
+      ], {
+          // timing options
+          duration: 1000,
+          iterations: 1
+      });
+      document.getElementById("hideDataButton").animate([
+          // keyframes
+          { opacity: '1' },
+          { opacity: '0' }
+      ], {
+          // timing options
+          duration: 1000,
+          iterations: 1
+      });
 }
+  
 function hideOriginalTweets() {
     //check if the other tables are hidden or not
     var x = document.getElementById("processed_tweets").style.display ;
@@ -119,6 +346,25 @@ function hideOriginalTweets() {
     document.getElementById("original_tweets").style.display = "none";
     document.getElementById("showOriginalTweetsButton").style.display = "block";
     document.getElementById("hideOriginalTweetsButton").style.display = "none";
+    // fadeout the hide data button and fade in the show data button
+    document.getElementById("showOriginalTweetsButton").animate([
+      // keyframes
+      { opacity: '0' },
+      { opacity: '1' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
+  document.getElementById("hideOriginalTweetsButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
 }
 function hideProcessedTweets() {
     //check if the other tables are hidden or not
@@ -132,6 +378,25 @@ function hideProcessedTweets() {
     document.getElementById("processed_tweets").style.display = "none";
     document.getElementById("showProcessedTweetsButton").style.display = "block";
     document.getElementById("hideProcessedTweetsButton").style.display = "none";
+    // fadeout the hide data button and fade in the show data button
+    document.getElementById("showProcessedTweetsButton").animate([
+      // keyframes
+      { opacity: '0' },
+      { opacity: '1' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
+  document.getElementById("hideProcessedTweetsButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
 }
 function hideTokenizedTweets() {
     //check if the other tables are hidden or not
@@ -145,6 +410,25 @@ function hideTokenizedTweets() {
     document.getElementById("tokenized_tweets").style.display = "none";
     document.getElementById("showTokenizedTweetsButton").style.display = "block";
     document.getElementById("hideTokenizedTweetsButton").style.display = "none";
+    // fadeout the hide data button and fade in the show data button
+    document.getElementById("showTokenizedTweetsButton").animate([
+      // keyframes
+      { opacity: '0' },
+      { opacity: '1' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
+  document.getElementById("hideTokenizedTweetsButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
 }
 function hideArabicSentiment() {
     //check if the other tables are hidden or not
@@ -158,6 +442,25 @@ function hideArabicSentiment() {
     document.getElementById("arabic_sentiment").style.display = "none";
     document.getElementById("showArabicSentimentButton").style.display = "block";
     document.getElementById("hideArabicSentimentButton").style.display = "none";
+    // fadeout the hide data button and fade in the show data button
+    document.getElementById("showArabicSentimentButton").animate([
+      // keyframes
+      { opacity: '0' },
+      { opacity: '1' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
+  document.getElementById("hideArabicSentimentButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
 }
 function hideArabicSentimentWords() {
     //check if the other tables are hidden or not
@@ -172,6 +475,25 @@ function hideArabicSentimentWords() {
     document.getElementById("arabic_sentiment_words").style.display = "none";
     document.getElementById("showArabicSentimentWordsButton").style.display = "block";
     document.getElementById("hideArabicSentimentWordsButton").style.display = "none";
+    // fadeout the hide data button and fade in the show data button
+    document.getElementById("showArabicSentimentWordsButton").animate([
+      // keyframes
+      { opacity: '0' },
+      { opacity: '1' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
+  document.getElementById("hideArabicSentimentWordsButton").animate([
+      // keyframes
+      { opacity: '1' },
+      { opacity: '0' }
+  ], {
+      // timing options
+      duration: 1000,
+      iterations: 1
+  });
 }
 
 function showGraphs() {
