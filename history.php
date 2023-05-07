@@ -507,6 +507,26 @@ fclose($fp2);
                 </div>
             </div>
             <script>
+                // animate the navbar on click to scroll to the section
+                $(document).ready(function(){
+                    // Add smooth scrolling to all links
+                    $("a").on('click', function(event) {
+                        // Make sure this.hash has a value before overriding default behavior
+                        if (this.hash !== "") { // this.hash is the clicked link
+                            // Prevent default anchor click behavior
+                            event.preventDefault();
+                            // Store hash
+                            var hash = this.hash;
+                            // animate the scroll  
+                            $('html, body').animate({
+                                scrollTop: $(hash).offset().top
+                            }, 800, function(){
+                                // Add hash (#) to URL when done scrolling (default click behavior)
+                                window.location.hash = hash;
+                            });
+                        } // End if
+                    });
+                });
                 function showGraphs() {
                     document.getElementById("numWords").style.display = "block";
                     document.getElementById("pieSentiment").style.display = "block";
